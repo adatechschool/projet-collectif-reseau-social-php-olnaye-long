@@ -33,8 +33,6 @@
         //Etape 1: Le mur concerne un utilisateur en particulier
 
         $userId = intval($_GET['user_id']);
-        ?>
-        <?php
         /**
          * Etape 2: se connecter à la base de donnée
          */
