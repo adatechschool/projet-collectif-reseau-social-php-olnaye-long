@@ -97,8 +97,9 @@
                     </div>
                     <footer>
                         <small>♥ <?php echo $post['like_number'] ?></small>
-                        <!-- @todo : boucle while pour itérer chaque tag  comme dans feed-->
-                        <a href="<?php echo $post['taglist'] ?>">#<?php echo $post['taglist'] ?></a>
+                        <!-- @todo : boucle while pour itérer chaque tag  comme dans feed & tags-->
+                        <!-- @todo : gérer le lien à mettre dans l'attribut href pour rediriger vers l'id -->
+                        <a href="">#<?php echo $post['taglist'] ?></a>
                     </footer>
                 </article>
             <?php } ?>

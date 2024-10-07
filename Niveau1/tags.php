@@ -30,10 +30,6 @@
     <div id="wrapper">
         <?php
         /**
-         * Cette page est similaire à wall.php ou feed.php 
-         * mais elle porte sur les mots-clés (tags)
-         */
-        /**
          * Etape 1: Le mur concerne un mot-clé en particulier
          */
         $tagId = intval($_GET['tag_id']);
@@ -53,15 +49,13 @@
             $laQuestionEnSql = "SELECT * FROM tags WHERE id= '$tagId' ";
             $lesInformations = $mysqli->query($laQuestionEnSql);
             $tag = $lesInformations->fetch_assoc();
-            //@todo: afficher le résultat de la ligne ci dessous, remplacer XXX par le label et effacer la ligne ci-dessous
-            echo "<pre>" . print_r($tag, 1) . "</pre>";
+            //echo "<pre>" . print_r($tag, 1) . "</pre>";
             ?>
             <img src="user.jpg" alt="Portrait de l'utilisatrice" />
             <section>
                 <h3>Présentation</h3>
                 <p>Sur cette page vous trouverez les derniers messages comportant
-                    le mot-clé XXX
-                    (n° <?php echo $tagId ?>)
+                    le mot-clé <?php echo $tag['label'] ?>
                 </p>
 
             </section>
@@ -74,18 +68,18 @@
             $laQuestionEnSql = "
                     SELECT posts.content,
                     posts.created,
-                    users.alias as author_name,  
-                    count(likes.id) as like_number,  
-                    GROUP_CONCAT(DISTINCT tags.label) AS taglist 
-                    FROM posts_tags as filter 
+                    users.alias as author_name,
+                    count(likes.id) as like_number,
+                    GROUP_CONCAT(DISTINCT tags.label) AS taglist
+                    FROM posts_tags as filter
                     JOIN posts ON posts.id=filter.post_id
                     JOIN users ON users.id=posts.user_id
-                    LEFT JOIN posts_tags ON posts.id = posts_tags.post_id  
-                    LEFT JOIN tags       ON posts_tags.tag_id  = tags.id 
-                    LEFT JOIN likes      ON likes.post_id  = posts.id 
-                    WHERE filter.tag_id = '$tagId' 
+                    LEFT JOIN posts_tags ON posts.id = posts_tags.post_id
+                    LEFT JOIN tags       ON posts_tags.tag_id  = tags.id
+                    LEFT JOIN likes      ON likes.post_id  = posts.id
+                    WHERE filter.tag_id = '$tagId'
                     GROUP BY posts.id
-                    ORDER BY posts.created DESC  
+                    ORDER BY posts.created DESC
                     ";
             $lesInformations = $mysqli->query($laQuestionEnSql);
             if (! $lesInformations) {
@@ -93,28 +87,25 @@
             }
 
             /**
-             * Etape 4: @todo Parcourir les messsages et remplir correctement le HTML avec les bonnes valeurs php
+             * Etape 4: @todo Parcourir les messages et remplir correctement le HTML avec les bonnes valeurs php
              */
             while ($post = $lesInformations->fetch_assoc()) {
 
-                echo "<pre>" . print_r($post, 1) . "</pre>";
+                // echo "<pre>" . print_r($post, 1) . "</pre>";
             ?>
                 <article>
                     <h3>
-                        <time datetime='2020-02-01 11:12:13'>31 février 2010 à 11h12</time>
+                        <time datetime='2020-02-01 11:12:13'><?php echo $post['created'] ?></time>
                     </h3>
-                    <address>par AreTirer</address>
+                    <address>par <?php echo $post['author_name'] ?></address>
                     <div>
-                        <p>Ceci est un paragraphe</p>
-                        <p>Ceci est un autre paragraphe</p>
-                        <p>... de toutes manières il faut supprimer cet
-                            article et le remplacer par des informations en
-                            provenance de la base de donnée</p>
+                        <p><?php echo $post['content'] ?></p>
                     </div>
                     <footer>
-                        <small>♥ 132</small>
-                        <a href="">#lorem</a>,
-                        <a href="">#piscitur</a>,
+                        <small>♥ <?php echo $post['like_number'] ?></small>
+                        <!-- @todo : boucle while pour itérer chaque tag comme dans wall & feed -->
+                        <!-- @todo : gérer le lien à mettre dans l'attribut href pour rediriger vers l'id -->
+                        <a href="">#<?php echo $post['taglist'] ?></a>,
                     </footer>
                 </article>
             <?php } ?>
