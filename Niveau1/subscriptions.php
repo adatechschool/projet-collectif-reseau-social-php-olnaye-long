@@ -61,14 +61,14 @@
             $lesInformations = $mysqli->query($laQuestionEnSql);
             // Etape 4: Afficher les utilisatrices suivies.
 
-            while ($post = $lesInformations->fetch_assoc()) {
-                // echo "<pre>" . print_r($post, 1) . "</pre>";
+            while ($subscribed = $lesInformations->fetch_assoc()) {
+                // echo "<pre>" . print_r($subscribed, 1) . "</pre>";
 
             ?>
                 <article>
                     <img src="user.jpg" alt="blason" />
-                    <h3><?php echo $post['alias'] ?></h3>
-                    <p>id:<?php echo $post['id'] ?></p>
+                    <h3><?php echo $subscribed['alias'] ?></h3>
+                    <p>id:<?php echo $subscribed['id'] ?></p>
                 </article>
             <?php } ?>
         </main>
