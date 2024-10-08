@@ -7,6 +7,7 @@
             echo ($pageTitle == 'feed') ? "Sur cette page vous trouverez tous les messages des utilisatrices auxquelles est abonnée {$userAlias}." : "";
             echo ($pageTitle == 'followers') ? "Sur cette page vous trouverez la liste des personnes qui suivent {$userAlias}." : "";
             echo ($pageTitle == 'news') ? "Sur cette page vous trouverez les derniers messages de tous les utilisatrices du site." : "";
+            echo ($pageTitle == 'settings') ? "Sur cette page vous trouverez les informations de {$userAlias}" : "";
             ?>
         </p>
 

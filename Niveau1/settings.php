@@ -1,3 +1,5 @@
+<?php $pageTitle = "settings" ?>
+
 <!doctype html>
 <html lang="fr">
 
@@ -13,27 +15,14 @@
 
     <div id="wrapper" class='profile'>
 
-
-        <aside>
-            <img src="user.jpg" alt="Portrait de l'utilisatrice" />
-            <section>
-                <h3>Présentation</h3>
-                <p>Sur cette page vous trouverez les informations de l'utilisatrice
-                    n° <?php echo intval($_GET['user_id']) ?></p>
-
-            </section>
-        </aside>
+    <?php 
+        include 'init-db.php';
+        include 'aside.php';
+        ?>
+        
         <main>
             <?php
 
-            // Etape 1: Les paramètres concernent une utilisatrice en particulier
-
-            $userId = intval($_GET['user_id']);
-
-
-            //Etape 2: se connecter à la base de donnée
-
-            $mysqli = new mysqli("localhost", "root", "", "socialnetwork");
 
 
             //Etape 3: récupérer le nom de l'utilisateur
