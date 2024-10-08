@@ -15,18 +15,13 @@
 
     <div id="wrapper" class='profile'>
 
-    <?php 
+    <?php
         include 'init-db.php';
         include 'aside.php';
         ?>
-        
+
         <main>
             <?php
-
-
-
-            //Etape 3: récupérer le nom de l'utilisateur
-
             $laQuestionEnSql = "
                     SELECT users.*,
                     count(DISTINCT posts.id) as totalpost,
@@ -39,33 +34,9 @@
                     WHERE users.id = '$userId'
                     GROUP BY users.id
                     ";
-            $lesInformations = $mysqli->query($laQuestionEnSql);
-            if (! $lesInformations) {
-                echo ("Échec de la requete : " . $mysqli->error);
-            }
-            $user = $lesInformations->fetch_assoc();
-
-
-            // Etape 4: Affichage des données de l'utilisatrice
-
-            //echo "<pre>" . print_r($user, 1) . "</pre>";
+                    include 'fetch.php';
+                    include 'settings-template.php';
             ?>
-            <article class='parameters'>
-                <h3>Mes paramètres</h3>
-                <dl>
-                    <dt>Pseudo</dt>
-                    <dd><?php echo $user['alias'] ?></dd>
-                    <dt>Email</dt>
-                    <dd><?php echo $user['email'] ?></dd>
-                    <dt>Nombre de message</dt>
-                    <dd><?php echo $user['totalpost'] ?></dd>
-                    <dt>Nombre de "J'aime" donnés </dt>
-                    <dd><?php echo $user['totalgiven'] ?></dd>
-                    <dt>Nombre de "J'aime" reçus</dt>
-                    <dd><?php echo $user['totalreceived'] ?></dd>
-                </dl>
-
-            </article>
         </main>
     </div>
 </body>
