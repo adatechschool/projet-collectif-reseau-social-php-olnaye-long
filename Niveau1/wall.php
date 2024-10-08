@@ -1,3 +1,5 @@
+<?php $pageTitle = "wall" ?>
+
 <!doctype html>
 <html lang="fr">
 
@@ -12,35 +14,12 @@
     <?php include 'header.php'; ?>
 
     <div id="wrapper">
+
         <?php
-
-        //Etape 1: Le mur concerne un utilisateur en particulier
-
-        $userId = intval($_GET['user_id']);
-        /**
-         * Etape 2: se connecter à la base de donnée
-         */
-        $mysqli = new mysqli("localhost", "root", "", "socialnetwork");
+        include 'init-db.php';
+        include 'aside.php';
         ?>
 
-        <aside>
-            <?php
-            /**
-             * Etape 3.1: récupérer le nom de l'utilisateur
-             */
-            $laQuestionEnSql = "SELECT * FROM users WHERE id= '$userId' ";
-            $lesInformations = $mysqli->query($laQuestionEnSql);
-            $user = $lesInformations->fetch_assoc();
-            //@todo: afficher le résultat de la ligne ci dessous, remplacer XXX par l'alias et effacer la ligne ci-dessous
-            //echo "<pre>" . print_r($user, 1) . "</pre>";
-            ?>
-            <img src="user.jpg" alt="Portrait de l'utilisatrice" />
-            <section>
-                <h3>Présentation</h3>
-                <p>Sur cette page vous trouverez tous les messages de <?php echo $user['alias'] ?>.
-                </p>
-            </section>
-        </aside>
         <main>
             <?php
             /**
@@ -59,16 +38,16 @@
                     ORDER BY posts.created DESC
                     ";
             $lesInformations = $mysqli->query($laQuestionEnSql);
-            if (! $lesInformations) {
+            if (!$lesInformations) {
                 echo ("Échec de la requete : " . $mysqli->error);
             }
 
             // Etape 4 : affiche les valeurs de l'utilisatrice
-
+            
             while ($post = $lesInformations->fetch_assoc()) {
 
                 //echo "<pre>" . print_r($post, 1) . "</pre>";
-            ?>
+                ?>
                 <article>
                     <h3>
                         <time datetime='2020-02-01 11:12:13'><?php echo $post['created'] ?></time>
