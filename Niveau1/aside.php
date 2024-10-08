@@ -12,14 +12,12 @@
     <img src="user.jpg" alt="Portrait de l'utilisatrice" />
     <section>
         <h3>Présentation</h3>
-        <!-- <p>Sur cette page vous trouverez tous les message des utilisatrices
-            auxquel est abonnée l'utilisatrice <? //php echo $user['alias']
-                                                ?>
-        </p> -->
         <p><?php
-            echo ($pageTitle == 'feed') ? "Sur cette page vous trouverez tous les messages des utilisatrices auxquelles est abonnée l'utilisatrice " . $userAlias . '.' : "";
-            echo ($pageTitle == 'followers') ? "Sur cette page vous trouverez la liste des personnes qui suivent " . $userAlias . '.' : "";
-            ?></p>
+            echo ($pageTitle == 'feed') ? "Sur cette page vous trouverez tous les messages des utilisatrices auxquelles est abonnée {$userAlias}." : "";
+            echo ($pageTitle == 'followers') ? "Sur cette page vous trouverez la liste des personnes qui suivent {$userAlias}." : "";
+            echo ($pageTitle == 'news') ? "Sur cette page vous trouverez les derniers messages de tous les utilisatrices du site." : "";
+            ?>
+        </p>
 
     </section>
 </aside>
