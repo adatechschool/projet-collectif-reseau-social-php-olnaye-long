@@ -11,13 +11,13 @@
 </head>
 
 <body>
-    <?php include 'header.php'; ?>
+<?php include './src/templates/header-template.php'; ?>
 
     <div id="wrapper" class='profile'>
 
     <?php
-        include 'init-db.php';
-        include 'aside.php';
+        include './src/methods/init-db.php';
+        include './src/templates/aside-template.php';
         ?>
 
         <main>
@@ -34,8 +34,8 @@
                     WHERE users.id = '$userId'
                     GROUP BY users.id
                     ";
-                    include 'fetch.php';
-                    include 'settings-template.php';
+                    include './src/methods/fetch.php';
+                    include './src/templates/settings-template.php';
             ?>
         </main>
     </div>

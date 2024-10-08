@@ -11,20 +11,17 @@
 </head>
 
 <body>
-    <?php include 'header.php'; ?>
+    <?php include './src/templates/header-template.php'; ?>
 
     <div id="wrapper">
         <?php
-        include 'init-db.php';
-        include 'aside.php';
+    include './src/methods/init-db.php';
+    include './src/templates/aside-template.php';
         ?>
 
 
         <main>
             <?php
-            /**
-             * Etape 3.2: récupérer tous les messages des abonnements
-             */
             $laQuestionEnSql = "
                     SELECT posts.content,
                     posts.created,
@@ -41,8 +38,8 @@
                     GROUP BY posts.id
                     ORDER BY posts.created DESC
                     ";
-                    include 'fetch.php';
-                    include 'post-template.php';
+                    include './src/methods/fetch.php';
+                    include './src/templates/post-template.php';
             ?>
 
         </main>

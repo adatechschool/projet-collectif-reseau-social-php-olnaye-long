@@ -12,13 +12,13 @@
 </head>
 
 <body>
-    <?php include 'header.php';
-    include 'init-db.php';
+    <?php include './src/templates/header-template.php';
+    include './src/methods/init-db.php';
     ?>
 
     <div id="wrapper" class='admin'>
-        <?php include 'admin-tags.php';
-        include 'admin-users.php' ?>
+        <?php include './src/templates/admin-tags-template.php';
+        include './src/templates/admin-users-template.php' ?>
     </div>
 </body>
 

@@ -12,13 +12,14 @@
 </head>
 
 <body>
-    <?php include 'header.php'; ?>
+<?php include './src/templates/header-template.php'; ?>
+
 
     <div id="wrapper">
 
-        <?php
-        include 'init-db.php';
-        include 'aside.php';
+    <?php
+        include './src/methods/init-db.php';
+        include './src/templates/aside-template.php';
         ?>
 
         <main class='contacts'>
@@ -30,8 +31,8 @@
                     WHERE followers.following_user_id='$userId'
                     GROUP BY users.id
                     ";
-                    include 'fetch.php';
-                    include 'follow-template.php';
+                    include './src/methods/fetch.php';
+                    include './src/templates/follow-template.php';
                 ?>
         </main>
     </div>

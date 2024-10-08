@@ -11,14 +11,15 @@
 </head>
 
 <body>
-    <?php include 'header.php'; ?>
+<?php include './src/templates/header-template.php'; ?>
 
     <div id="wrapper">
 
-        <?php
-        include 'init-db.php';
-        include 'aside.php';
+    <?php
+        include './src/methods/init-db.php';
+        include './src/templates/aside-template.php';
         ?>
+
 
         <main>
             <?php
@@ -35,8 +36,8 @@
                     GROUP BY posts.id
                     ORDER BY posts.created DESC
                     ";
-            include 'fetch.php';
-            include 'post-template.php';
+                    include './src/methods/fetch.php';
+                    include './src/templates/post-template.php';
             ?>
         </main>
     </div>

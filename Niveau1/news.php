@@ -11,14 +11,14 @@
 </head>
 
 <body>
-    <?php
-    include 'header.php'; ?>
+    <?php include './src/templates/header-template.php'; ?>
+
 
     <div id="wrapper">
 
         <?php
-        include 'init-db.php';
-        include 'aside.php';
+        include './src/methods/init-db.php';
+        include './src/templates/aside-template.php';
         ?>
 
         <main>
@@ -52,8 +52,8 @@
                     ORDER BY posts.created DESC
                     LIMIT 5
                     ";
-                    include 'fetch.php';
-                    include 'post-template.php';
+                    include './src/methods/fetch.php';
+                    include './src/templates/post-template.php';
             ?>
         </main>
     </div>
