@@ -26,8 +26,9 @@
         $mysqli = new mysqli("localhost", "root", "", "socialnetwork");
         ?>
 
-        <aside>
-            <?php
+        <?php include 'aside.php' ?>
+        <!-- <aside>
+            <//?php
             /**
              * Etape 3.1: récupérer le nom de l'utilisateur
              */
@@ -38,13 +39,14 @@
             ?>
             <img src="user.jpg" alt="Portrait de l'utilisatrice" />
             <section>
-                <h3>Présentation</h3>
-                <p>Sur cette page vous trouverez tous les message des utilisatrices
-                    auxquel est abonnée l'utilisatrice <?php echo $user['alias'] ?>
-                </p>
+                <h3>Présentation</h3> -->
+        <p>Sur cette page vous trouverez tous les message des utilisatrices
+            auxquel est abonnée l'utilisatrice <?php echo $user['alias'] ?>
+        </p>
 
-            </section>
+        </section>
         </aside>
+
         <main>
             <?php
             /**
@@ -74,7 +76,7 @@
             // Etape 4 : affiche les valeurs de l'utilisatrice suivie
 
             while ($post = $lesInformations->fetch_assoc()) {
-                echo "<pre>" . print_r($post, 1) . "</pre>";
+                // echo "<pre>" . print_r($post, 1) . "</pre>";
 
 
             ?>
