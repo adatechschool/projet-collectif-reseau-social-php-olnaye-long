@@ -1,3 +1,5 @@
+<?php $pageTitle = "tags" ?>
+
 <!doctype html>
 <html lang="fr">
 
@@ -12,38 +14,12 @@
     <?php include 'header.php'; ?>
 
     <div id="wrapper">
+
         <?php
-        /**
-         * Etape 1: Le mur concerne un mot-clé en particulier
-         */
-        $tagId = intval($_GET['tag_id']);
-        ?>
-        <?php
-        /**
-         * Etape 2: se connecter à la base de donnée
-         */
-        $mysqli = new mysqli("localhost", "root", "", "socialnetwork");
+        include 'init-db.php';
+        include 'aside.php';
         ?>
 
-        <aside>
-            <?php
-            /**
-             * Etape 3: récupérer le nom du mot-clé
-             */
-            $laQuestionEnSql = "SELECT * FROM tags WHERE id= '$tagId' ";
-            $lesInformations = $mysqli->query($laQuestionEnSql);
-            $tag = $lesInformations->fetch_assoc();
-            //echo "<pre>" . print_r($tag, 1) . "</pre>";
-            ?>
-            <img src="user.jpg" alt="Portrait de l'utilisatrice" />
-            <section>
-                <h3>Présentation</h3>
-                <p>Sur cette page vous trouverez les derniers messages comportant
-                    le mot-clé <?php echo $tag['label'] ?>
-                </p>
-
-            </section>
-        </aside>
         <main>
             <?php
             /**
