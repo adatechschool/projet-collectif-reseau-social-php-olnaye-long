@@ -14,7 +14,6 @@
 <body>
 <?php include './src/templates/header-template.php'; ?>
 
-
     <div id="wrapper">
 
     <?php

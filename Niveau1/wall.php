@@ -11,11 +11,11 @@
 </head>
 
 <body>
-<?php include './src/templates/header-template.php'; ?>
+    <?php include './src/templates/header-template.php'; ?>
 
     <div id="wrapper">
 
-    <?php
+        <?php
         include './src/methods/init-db.php';
         include './src/templates/aside-template.php';
         ?>
@@ -36,9 +36,13 @@
                     GROUP BY posts.id
                     ORDER BY posts.created DESC
                     ";
-                    include './src/methods/fetch.php';
-                    include './src/templates/post-template.php';
+            include './src/methods/fetch.php';
+            include './src/templates/post-template.php';
             ?>
+            <script>
+                // Utiliser PHP pour injecter une variable dans JavaScript
+                console.log("<?php echo $lesInformations; ?>");
+            </script>
         </main>
     </div>
 </body>

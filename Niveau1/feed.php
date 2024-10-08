@@ -15,11 +15,9 @@
 
     <div id="wrapper">
         <?php
-    include './src/methods/init-db.php';
-    include './src/templates/aside-template.php';
+        include './src/methods/init-db.php';
+        include './src/templates/aside-template.php';
         ?>
-
-
         <main>
             <?php
             $laQuestionEnSql = "
@@ -38,8 +36,8 @@
                     GROUP BY posts.id
                     ORDER BY posts.created DESC
                     ";
-                    include './src/methods/fetch.php';
-                    include './src/templates/post-template.php';
+            include './src/methods/fetch.php';
+            include './src/templates/post-template.php';
             ?>
 
         </main>
