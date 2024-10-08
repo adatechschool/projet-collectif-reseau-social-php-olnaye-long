@@ -52,6 +52,7 @@
                     ORDER BY posts.created DESC
                     LIMIT 5
                     ";
+                    include 'fetch.php';
                     include 'post-template.php';
             ?>
         </main>

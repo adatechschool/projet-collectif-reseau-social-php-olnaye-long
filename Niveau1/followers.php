@@ -27,6 +27,7 @@
                     WHERE followers.followed_user_id='$userId'
                     GROUP BY users.id
                     ";
+                    include 'fetch.php';
                     include 'follow-template.php';
             ?>
         </main>

@@ -35,6 +35,7 @@
                     GROUP BY posts.id
                     ORDER BY posts.created DESC
                     ";
+            include 'fetch.php';
             include 'post-template.php';
             ?>
         </main>
