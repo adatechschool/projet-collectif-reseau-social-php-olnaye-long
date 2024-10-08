@@ -1,3 +1,6 @@
+<?php $pageTitle = 'admin'
+    ?>
+
 <!doctype html>
 <html lang="fr">
 
@@ -9,37 +12,20 @@
 </head>
 
 <body>
-    <?php include 'header.php'; ?>
-
-
-    <?php
-    //Etape 1: Ouvrir une connexion avec la base de donnée.
-    $mysqli = new mysqli("localhost", "root", "", "socialnetwork");
-    //verification
-    if ($mysqli->connect_errno) {
-        echo ("Échec de la connexion : " . $mysqli->connect_error);
-        exit();
-    }
+    <?php include 'header.php';
+    include 'init-db.php';
     ?>
+
     <div id="wrapper" class='admin'>
         <aside>
             <h2>Mots-clés</h2>
             <?php
-            /*
-                 * Etape 2 : trouver tous les mots clés
-                 */
-            $laQuestionEnSql = "SELECT * FROM `tags` LIMIT 50";
-            $lesInformations = $mysqli->query($laQuestionEnSql);
-            // Vérification
-            if (! $lesInformations) {
-                echo ("Échec de la requete : " . $mysqli->error);
-                exit();
-            }
+
 
             //Etape 3 : @todo : Afficher les mots clés en s'inspirant de ce qui a été fait dans news.php
             while ($tag = $lesInformations->fetch_assoc()) {
                 //echo "<pre>" . print_r($tag, 1) . "</pre>";
-            ?>
+                ?>
                 <article>
                     <h3>#<?php echo $tag['label'] ?></h3>
                     <p>id:<?php echo $tag['id'] ?></p>
@@ -56,7 +42,7 @@
             $laQuestionEnSql = "SELECT * FROM `users` LIMIT 50";
             $lesInformations = $mysqli->query($laQuestionEnSql);
             // Vérification
-            if (! $lesInformations) {
+            if (!$lesInformations) {
                 echo ("Échec de la requete : " . $mysqli->error);
                 exit();
             }
@@ -64,7 +50,7 @@
             //Etape 5 : @todo : Afficher les utilisatrices en s'inspirant de ce qui a été fait dans news.php
             while ($users = $lesInformations->fetch_assoc()) {
                 //echo "<pre>" . print_r($users, 1) . "</pre>";
-            ?>
+                ?>
                 <article>
                     <h3><?php echo $users['alias'] ?></h3>
                     <p>id:<?php echo $users['id'] ?></p>
