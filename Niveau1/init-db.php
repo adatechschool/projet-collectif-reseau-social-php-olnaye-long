@@ -1,6 +1,7 @@
 <?php
+include 'password.php';
 // connexion à la base de donnée
-$mysqli = new mysqli("localhost", "root", "", "socialnetwork");
+$mysqli = new mysqli($dbHostname, $dbUser, $dbPassword, $dbName);
 
 // Etape 1: Les paramètres concernent une utilisatrice en particulier
 if (isset($_GET['user_id'])) {
@@ -14,7 +15,7 @@ if (isset($_GET['user_id'])) {
 elseif (isset($_GET['tag_id'])) {
     $tagId = intval($_GET['tag_id']);
     $laQuestionEnSql = "SELECT * FROM tags WHERE id= '$tagId' ";
-    
+
     $lesInformations = $mysqli->query($laQuestionEnSql);
     $tag = $lesInformations->fetch_assoc();
 }
