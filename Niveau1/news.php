@@ -11,18 +11,22 @@
 </head>
 
 <body>
-    <?php include 'header.php'; ?>
+    <?php 
+    include 'header.php'; ?>
 
     <div id="wrapper">
-
-        <?php include 'aside.php' ?>
+        
+        <?php 
+        include 'init-db.php';
+        include 'aside.php';
+        ?>
+        
         <main>
             <?php
             //Afficher les cinq derniers posts
             // Documentation : les exemples https://www.php.net/manual/fr/mysqli.query.php
 
             // Etape 1: Ouvrir une connexion avec la base de donnée.
-            $mysqli = new mysqli("localhost", "root", "", "socialnetwork");
             //verification
             if ($mysqli->connect_errno) {
                 echo "<article>";
