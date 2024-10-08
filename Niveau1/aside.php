@@ -13,10 +13,13 @@
     <section>
         <h3>Présentation</h3>
         <!-- <p>Sur cette page vous trouverez tous les message des utilisatrices
-            auxquel est abonnée l'utilisatrice <? //php echo $user['alias'] 
+            auxquel est abonnée l'utilisatrice <? //php echo $user['alias']
                                                 ?>
         </p> -->
-        <p><?php echo ($pageTitle == 'feed') ? "Sur cette page vous trouverez tous les messages des utilisatrices auxquelles est abonnée l'utilisatrice " . $userAlias . '.' : "condition non remplie"; ?></p>
+        <p><?php
+            echo ($pageTitle == 'feed') ? "Sur cette page vous trouverez tous les messages des utilisatrices auxquelles est abonnée l'utilisatrice " . $userAlias . '.' : "";
+            echo ($pageTitle == 'followers') ? "Sur cette page vous trouverez la liste des personnes qui suivent " . $userAlias . '.' : "";
+            ?></p>
 
     </section>
 </aside>

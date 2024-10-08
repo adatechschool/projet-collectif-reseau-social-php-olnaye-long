@@ -1,3 +1,5 @@
+<?php $pageTitle = 'followers' ?>
+
 <!doctype html>
 <html lang="fr">
 
@@ -18,20 +20,7 @@
         // Etape 2: se connecter à la base de donnée
         $mysqli = new mysqli("localhost", "root", "", "socialnetwork");
         ?>
-        <aside>
-            <?php
-            $laQuestionEnSql = "SELECT * FROM users WHERE id= '$userId' ";
-            $lesInformations = $mysqli->query($laQuestionEnSql);
-            $user = $lesInformations->fetch_assoc();
-            ?>
-            <img src="user.jpg" alt="Portrait de l'utilisatrice" />
-            <section>
-                <h3>Présentation</h3>
-                <!-- idée : mettre un if (si c'est nous qui sommes connectés, alors c'est "qui vous suivent") -->
-                <p>Sur cette page vous trouverez la liste des personnes qui
-                    suivent <?php echo $user['alias'] ?></p>
-            </section>
-        </aside>
+        <?php include 'aside.php' ?>
         <main class='contacts'>
             <?php
             $laQuestionEnSql = "
