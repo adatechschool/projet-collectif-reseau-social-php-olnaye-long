@@ -11,16 +11,16 @@
 </head>
 
 <body>
-    <?php 
+    <?php
     include 'header.php'; ?>
 
     <div id="wrapper">
-        
-        <?php 
+
+        <?php
         include 'init-db.php';
         include 'aside.php';
         ?>
-        
+
         <main>
             <?php
             //Afficher les cinq derniers posts
@@ -52,35 +52,8 @@
                     ORDER BY posts.created DESC
                     LIMIT 5
                     ";
-            $lesInformations = $mysqli->query($laQuestionEnSql);
-            // Vérification
-            if (!$lesInformations) {
-                echo "<article>";
-                echo ("Échec de la requete : " . $mysqli->error);
-                echo ("<p>Indice: Vérifiez la requete  SQL suivante dans phpmyadmin<code>$laQuestionEnSql</code></p>");
-                exit();
-            }
-
-            // Etape 3: Parcourir ces données et les ranger bien comme il faut dans du html
-            // NB: à chaque tour du while, la variable post ci dessous reçois les informations du post suivant.
-            while ($post = $lesInformations->fetch_assoc()) {
-                //La ligne suivante permet de print le tableau des données qu'on récupère au sein du html
-                //echo "<pre>" . print_r($post, 1) . "</pre>";
+                    include 'post-template.php';
             ?>
-                <article>
-                    <h3>
-                        <time><?php echo $post['created'] ?></time>
-                    </h3>
-                    <address><?php echo $post['author_name'] ?></address>
-                    <div>
-                        <p><?php echo $post['content'] ?></p>
-                    </div>
-                    <footer>
-                        <small>♥ <?php echo $post['like_number'] ?> </small>
-                        <a href="<?php echo $post['taglist'] ?>"><?php echo $post['taglist'] ?></a>,
-                    </footer>
-                </article>
-            <?php } ?>
         </main>
     </div>
 </body>
