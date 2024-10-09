@@ -3,7 +3,7 @@ while ($post = $lesInformations->fetch_assoc()) {
     ?>
 
     <article>
-     <?php echo "<pre>" . print_r($post, 1) . "</pre>"?>
+     <?php //echo "<pre>" . print_r($post, 1) . "</pre>"?>
 
         <h3>
             <time datetime='2020-02-01 11:12:13'><?php echo $post['created'] ?></time>
