@@ -20,10 +20,8 @@
         include './src/templates/aside-template.php';
         ?>
 
-
         <main>
             <?php
-
             $laQuestionEnSql = "
                     SELECT posts.content, posts.created, users.alias as author_name,
                     COUNT(likes.id) as like_number, GROUP_CONCAT(DISTINCT tags.label) AS taglist
