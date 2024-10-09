@@ -2,6 +2,7 @@
 while ($post = $lesInformations->fetch_assoc()) {
     ?>
     <article>
+     <?php ?>   
         <h3>
             <time datetime='2020-02-01 11:12:13'><?php echo $post['created'] ?></time>
         </h3>

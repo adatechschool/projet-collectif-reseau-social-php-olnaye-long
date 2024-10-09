@@ -1,6 +1,7 @@
 <article class='parameters'>
     <h3>Mes paramètres</h3>
     <dl>
+        <?php $user = $lesInformations->fetch_assoc(); ?>
         <dt>Pseudo</dt>
         <dd><?php echo $user['alias'] ?></dd>
         <dt>Email</dt>
