@@ -25,7 +25,7 @@
             <?php
             //Afficher les cinq derniers posts
             // Documentation : les exemples https://www.php.net/manual/fr/mysqli.query.php
-            
+
             // Etape 1: Ouvrir une connexion avec la base de donnée.
             //verification
             if ($mysqli->connect_errno) {
@@ -40,6 +40,7 @@
             $laQuestionEnSql = "
                     SELECT posts.content,
                     posts.created,
+                    posts.user_id as user_id,
                     users.alias as author_name,
                     count(likes.id) as like_number,
                     GROUP_CONCAT(DISTINCT tags.label) AS taglist
