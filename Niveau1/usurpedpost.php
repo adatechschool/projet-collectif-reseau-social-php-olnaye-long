@@ -42,20 +42,17 @@ $pageTitle = 'usurpedpost';
 
                         // echo "<pre>" . print_r($postContent) . "</pre>"; // affichage pour debug
 
-                        //Etape 3 : Petite sécurité (inutile puisque userID est un entier et qu'il escape les caractères spéciaux????? DUH)
-                        $authorId = intval($mysqli->real_escape_string($authorId));
+                        $authorId = intval($authorId);
 
                         $postContent = $mysqli->real_escape_string($postContent); // bah là oui on peut vérifier qu'il n'y a pas de caratères spéciaux.
 
                         //Etape 4 : construction de la requete
                         $lInstructionSql = "INSERT INTO posts "
-                                . "(id, user_id, content, created, permalink, post_id) "
+                                . "(id, user_id, content, created) "
                                 . "VALUES (NULL, "
                                 . $authorId . ", "
                                 . "'" . $postContent . "', "
-                                . "NOW(), "
-                                . "'', "
-                                . "1);"
+                                . "NOW());"
                                 ;
                         // echo $lInstructionSql;
 
