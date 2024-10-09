@@ -24,4 +24,7 @@ if (isset($_GET['user_id'])) {
 } elseif ($pageTitle == 'admin') {
     $laQuestionEnSql = "SELECT * FROM `tags` LIMIT 50";
     $lesInformations = $mysqli->query($laQuestionEnSql);
+} elseif ($pageTitle == 'usurpedpost') {
+    $laQuestionEnSql = "SELECT * FROM users";
+    $lesInformations = $mysqli->query($laQuestionEnSql);
 }
