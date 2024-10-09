@@ -39,7 +39,7 @@
                     ORDER BY posts.created DESC
                     ";
                     include './src/methods/fetch.php';
-                    include './post-template.php';
+                    include './src/templates/post-template.php';
 
              ?>
         </main>
