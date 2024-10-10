@@ -40,6 +40,7 @@
             include './src/templates/post-template.php';
             ?>
             <script>
+                 <?php echo "<pre>" . print_r($post, 1) . "</pre>"?>
                 // Utiliser PHP pour injecter une variable dans JavaScript
                 console.log("<?php echo $lesInformations; ?>");
             </script>
