@@ -77,6 +77,7 @@ $pageTitle = 'login';
                         echo "La connexion a échoué. ";
                     }
                 }
+                $sessionId = $_SESSION['connected_id']
                 ?>
                 <form action="login.php" method="post">
                     <input type='hidden' name='email' value='connexion'>
