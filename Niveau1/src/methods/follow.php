@@ -4,7 +4,7 @@
     $verificationFollow = $mysqli->query("
             SELECT * FROM followers
             WHERE followed_user_id = '5'
-            AND following_user_id = '4'
+            AND following_user_id = ''
             ");
 
     if ($verificationFollow->num_rows == 0) {
@@ -32,8 +32,9 @@
             $follow_button_label = "Suivre";
         }
     }
-} ?>
-<form action="" method='post'>
-    <input type="hidden" name="isFollowing" value="<?php echo $isFollowing; ?>">
-    <input type="submit" value="<?php echo $follow_button_label ?>" name="followButton">
-</form>
+?>
+    <form action="" method='post'>
+        <input type="hidden" name="isFollowing" value="<?php echo $isFollowing; ?>">
+        <input type="submit" value="<?php echo $follow_button_label ?>" name="followButton">
+    </form>
+<?php } ?>
