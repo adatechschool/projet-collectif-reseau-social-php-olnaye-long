@@ -54,21 +54,25 @@ $pageTitle = 'login';
 
                     //Etape 5 : construction de la requete
                     $lInstructionSql = "SELECT * "
-                        . "FROM users "
-                        . "WHERE "
-                        . "email LIKE '" . $emailAVerifier . "'";
+                    . "FROM users "
+                    . "WHERE "
+                    . "email LIKE '" . $emailAVerifier . "' ";
 
+                    echo "<pre>" . print_r($_POST, 1) . "</pre>";
 
                     // Etape 6: Vérification de l'utilisateur
                     $res = $mysqli->query($lInstructionSql);
 
                     $user = $res->fetch_assoc();
+                    // echo "<pre>"  .  print_r($userId, 1) . "</pre>";
 
 
                     if (password_verify($passwdAVerifier, $user['password'])) {
                         echo "Votre connexion est un succès : " . $user['alias'] . ".";
                         $_SESSION['connected_id'] = $user['id'];
-                        header('location:: admin.php');
+                        // $url = "settings.php?user_id=$userId";
+                        // header("Location : $url");
+                        // exit();
                     } else {
                         echo "La connexion a échoué. ";
                     }
