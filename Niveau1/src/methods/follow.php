@@ -4,8 +4,8 @@
     $verificationFollow = $mysqli->query("
             SELECT * FROM followers
             WHERE followed_user_id = '5'
-            AND following_user_id = ''
-            ");
+            AND following_user_id = '4'
+            "); //followed_user_id = '$userId' following_user_id = 'sessionId'
 
     if ($verificationFollow->num_rows == 0) {
         $isFollowing = false;
@@ -17,17 +17,15 @@
 
     if (isset($_POST['followButton'])) {
         if ($verificationFollow->num_rows == 0) {
-            echo 'on a cliqué';
             $follow = $mysqli->query(
                 "INSERT INTO followers(followed_user_id, following_user_id) VALUES ('5', '4')"
-            );
+            ); //followed_user_id = '$userId' following_user_id = 'sessionId'
             $isFollowing = !$isFollowing;
             $follow_button_label = "Ne pas suivre";
         } else {
-            echo 'on a cliqué';
             $unfollow = $mysqli->query(
                 "DELETE FROM followers WHERE followed_user_id = '5' AND following_user_id = '4'"
-            );
+            ); //followed_user_id = '$userId' following_user_id = 'sessionId'
             $isFollowing = !$isFollowing;
             $follow_button_label = "Suivre";
         }
