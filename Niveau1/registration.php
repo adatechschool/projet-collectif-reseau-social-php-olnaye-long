@@ -47,11 +47,13 @@
                     if ($stmt) {
                         //En arguments : sss veut dire trois strings
                         $stmt->bind_param("sss", $dataToInsert['email'], $dataToInsert['password'], $dataToInsert['alias']);
+
+                        //@todo : convertir ce bloc en try ... catch pour un code plus secure et plus propre
                         if ($stmt->execute()) {
                             echo "Votre inscription est un succès : " . $dataToInsert['alias'];
                             echo " <a href='login.php'>Connectez-vous.</a>";
                         } else {
-                            echo "L'inscription a échouée : " . $mysqli->error;
+                            echo "L'inscription a échoué : " . $mysqli->error;
                         }
                     }
                 }
