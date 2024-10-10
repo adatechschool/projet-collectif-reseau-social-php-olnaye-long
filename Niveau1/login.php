@@ -41,40 +41,46 @@ $pageTitle = 'login';
                     $passwdAVerifier = $_POST['motpasse'];
 
 
-                    //Etape 3 : Ouvrir une connexion avec la base de donnée.
+                    //Connexion avec la base de donnée.
                     include './src/methods/init-db.php';
                     //Etape 4 : Petite sécurité
                     // pour éviter les injection sql : https://www.w3schools.com/sql/sql_injection.asp
                     $emailAVerifier = $mysqli->real_escape_string($emailAVerifier);
                     $passwdAVerifier = $mysqli->real_escape_string($passwdAVerifier);
                     // on crypte le mot de passe pour éviter d'exposer notre utilisatrice en cas d'intrusion dans nos systèmes
-                    $passwdAVerifier = password_hash($passwdAVerifier, PASSWORD_DEFAULT);
-                    // NB: md5 est pédagogique mais n'est pas recommandée pour une vraies sécurité
+                    password_hash($passwdAVerifier, PASSWORD_BCRYPT);
+
+
+
                     //Etape 5 : construction de la requete
                     $lInstructionSql = "SELECT * "
                         . "FROM users "
                         . "WHERE "
                         . "email LIKE '" . $emailAVerifier . "'";
+
+
                     // Etape 6: Vérification de l'utilisateur
                     $res = $mysqli->query($lInstructionSql);
+
                     $user = $res->fetch_assoc();
-                    if (!$user or $user["password"] != $passwdAVerifier) {
-                        echo "La connexion a échouée. ";
-                    } else {
+
+
+                    if (password_verify($passwdAVerifier, $user['password'])) {
                         echo "Votre connexion est un succès : " . $user['alias'] . ".";
-                        // Etape 7 : Se souvenir que l'utilisateur s'est connecté pour la suite
-                        // documentation: https://www.php.net/manual/fr/session.examples.basic.php
                         $_SESSION['connected_id'] = $user['id'];
+                        header('location:: admin.php');
+                    } else {
+                        echo "La connexion a échoué. ";
                     }
                 }
                 ?>
                 <form action="login.php" method="post">
-                    <input type='hidden' name='???' value='achanger'>
+                    <input type='hidden' name='email' value='connexion'>
                     <dl>
                         <dt><label for='email'>E-Mail</label></dt>
-                        <dd><input type='email' name='email'></dd>
+                        <dd><input type='email' name='email' id="email"></dd>
                         <dt><label for='motpasse'>Mot de passe</label></dt>
-                        <dd><input type='password' name='motpasse'></dd>
+                        <dd><input type='password' name='motpasse' id="motpasse"></dd>
                     </dl>
                     <input type='submit'>
                 </form>
