@@ -54,9 +54,9 @@ $pageTitle = 'login';
 
                     //Etape 5 : construction de la requete
                     $lInstructionSql = "SELECT * "
-                    . "FROM users "
-                    . "WHERE "
-                    . "email LIKE '" . $emailAVerifier . "' ";
+                        . "FROM users "
+                        . "WHERE "
+                        . "email LIKE '" . $emailAVerifier . "' ";
 
                     echo "<pre>" . print_r($_POST, 1) . "</pre>";
 
@@ -73,11 +73,11 @@ $pageTitle = 'login';
                         // $url = "settings.php?user_id=$userId";
                         // header("Location : $url");
                         // exit();
+                        $sessionId = $_SESSION['connected_id'];
                     } else {
                         echo "La connexion a échoué. ";
                     }
                 }
-                $sessionId = $_SESSION['connected_id']
                 ?>
                 <form action="login.php" method="post">
                     <input type='hidden' name='email' value='connexion'>
