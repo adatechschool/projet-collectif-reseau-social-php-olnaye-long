@@ -31,6 +31,11 @@ $pageTitle = 'login';
                  */
                 // Etape 1 : vérifier si on est en train d'afficher ou de traiter le formulaire
                 // si on recoit un champs email rempli il y a une chance que ce soit un traitement
+
+                if (isset($_POST['reset'])) {
+                    unset($_SESSION['connected_id']);
+                }
+
                 $enCoursDeTraitement = isset($_POST['email']);
 
                 if ($enCoursDeTraitement) {
@@ -70,10 +75,8 @@ $pageTitle = 'login';
                     if (password_verify($passwdAVerifier, $user['password'])) {
                         echo "Votre connexion est un succès : " . $user['alias'] . ".";
                         $_SESSION['connected_id'] = $user['id'];
-                        // $url = "settings.php?user_id=$userId";
-                        // header("Location : $url");
+                        // header("Location : news.php");
                         // exit();
-                        $sessionId = $_SESSION['connected_id'];
                     } else {
                         echo "La connexion a échoué. ";
                     }
@@ -88,6 +91,7 @@ $pageTitle = 'login';
                         <dd><input type='password' name='motpasse' id="motpasse"></dd>
                     </dl>
                     <input type='submit'>
+                    <input type="submit" value="logout" name="reset">
                 </form>
                 <p>
                     Pas de compte?
