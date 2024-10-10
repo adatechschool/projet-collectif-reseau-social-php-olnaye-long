@@ -1,5 +1,5 @@
 <?php if ($pageTitle == 'wall') {
-    //$connectedId = $connected_id;
+    // $connectedId = $connected_id;
     //Vérification que l'user connecté suit ou non la personne
     $verificationFollow = $mysqli->query("
             SELECT * FROM followers
@@ -18,7 +18,7 @@
     if (isset($_POST['followButton'])) {
         if ($verificationFollow->num_rows == 0) {
             echo 'on a cliqué';
-            $addFollow = $mysqli->query(
+            $follow = $mysqli->query(
                 "INSERT INTO followers(followed_user_id, following_user_id) VALUES ('5', '4')"
             );
             $isFollowing = !$isFollowing;
