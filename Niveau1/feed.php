@@ -14,10 +14,12 @@
     <?php include './src/templates/header-template.php'; ?>
 
     <div id="wrapper">
+
         <?php
         include './src/methods/init-db.php';
         include './src/templates/aside-template.php';
         ?>
+        
         <main>
             <?php
             $laQuestionEnSql = "

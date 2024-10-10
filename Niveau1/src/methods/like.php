@@ -19,5 +19,4 @@ if (isset($_GET['t'], $_GET['id']) and !empty($_GET['t']) and !empty($_GET['id']
         $ins = $bdd->prepare('INSERT INTO dislikes (post_id, user_id) VALUES (?, ?)');
         $ins->execute(array($getId, $getUserId));
     }
-    header('location: http://localhost/resoc/Niveau1/feed.php?user_id=5');
 }
