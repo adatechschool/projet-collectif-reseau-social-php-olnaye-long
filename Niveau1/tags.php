@@ -24,6 +24,7 @@
             <?php
             $laQuestionEnSql = "
                     SELECT posts.content,
+                    posts.id,
                     posts.created,
                     posts.user_id as user_id, 
                     users.alias as author_name,
