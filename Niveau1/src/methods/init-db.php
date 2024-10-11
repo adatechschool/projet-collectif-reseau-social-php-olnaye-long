@@ -1,10 +1,8 @@
 <?php
 
-if ($pageTitle == 'likeFunction') {
-    include '../../password.php';
-} else {
-    include 'password.php';
-}
+
+include 'password.php';
+
 // connexion à la base de donnée
 $mysqli = new mysqli($dbHostname, $dbUser, $dbPassword, $dbName);
 
@@ -20,25 +18,19 @@ if (isset($_GET['user_id'])) {
     $lesInformations = $mysqli->query($laQuestionEnSql);
     $user = $lesInformations->fetch_assoc();
     $userAlias = $user['alias'];
-}
-elseif (isset($_GET['tag_id'])) {
+} elseif (isset($_GET['tag_id'])) {
 
     $tagId = intval($_GET['tag_id']);
     $laQuestionEnSql = "SELECT * FROM tags WHERE id= '$tagId' ";
 
     $lesInformations = $mysqli->query($laQuestionEnSql);
     $tag = $lesInformations->fetch_assoc();
-}
-elseif ($pageTitle == 'admin') {
+} elseif ($pageTitle == 'admin') {
 
     $laQuestionEnSql = "SELECT * FROM `tags` LIMIT 50";
     $lesInformations = $mysqli->query($laQuestionEnSql);
-}
-elseif ($pageTitle == 'usurpedpost') {
+} elseif ($pageTitle == 'usurpedpost') {
 
     $laQuestionEnSql = "SELECT * FROM users";
     $lesInformations = $mysqli->query($laQuestionEnSql);
-}
-elseif ($pageTitle == 'likeFunction') {
-
 }
