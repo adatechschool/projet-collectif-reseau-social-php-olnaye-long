@@ -31,7 +31,7 @@ if (!isset($_SESSION['connected_id'])) {
                 $follow_button_label = "Ne pas suivre";
             } else {
                 $unfollow = $mysqli->query(
-                    "DELETE FROM followers WHERE followed_user_id = '5' AND following_user_id = '4'"
+                    "DELETE FROM followers WHERE followed_user_id = '$userId' AND following_user_id = '$sessionId'"
                 );
                 $isFollowing = !$isFollowing;
                 $follow_button_label = "Suivre";
