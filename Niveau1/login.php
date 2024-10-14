@@ -72,8 +72,8 @@ $pageTitle = 'login';
                     if (password_verify($passwdAVerifier, $user['password'])) {
                         echo "Votre connexion est un succès : " . $user['alias'] . ".";
                         $_SESSION['connected_id'] = $user['id'];
-                        // header("Location :  Niveau1/news.php");
-                        // exit;
+                        header("Location:  news.php");
+                        exit;
                     } else {
                         echo "La connexion a échoué. ";
                     }
