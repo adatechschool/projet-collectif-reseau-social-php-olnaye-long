@@ -13,8 +13,6 @@ $pageTitle = 'login';
 </head>
 
 <body>
-    <?php include '..//Niveau1/src/templates/header-template.php' ?>
-
 
     <div id="wrapper">
 
