@@ -1,15 +1,13 @@
 <?php
-// session_start();
-
-// if (!isset($_SESSION['connected_id'])) {
-//     header("Location: login.php");
-// } else {
+if (!isset($_SESSION['connected_id'])) {
+    header("Location: login.php");
+} else {
 
 include "password.php";
 
 
 $BDD = new mysqli($dbHostname, $dbUser, $dbPassword, $dbName);
-$sessionId = 5;   // user_id codé en dur
+$sessionId = $_SESSION['connected_id'];   // user_id codé en dur
 
 // début de refacto, a retravailler si possible
 
@@ -180,5 +178,5 @@ while ($post = $lesInformations->fetch_assoc()) {
         };
     </script> -->
     </article>
-<?php //}
+<?php }
 } ?>
