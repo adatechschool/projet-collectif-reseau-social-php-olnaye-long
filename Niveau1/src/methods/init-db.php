@@ -1,5 +1,8 @@
 <?php
+
+
 include 'password.php';
+
 // connexion à la base de donnée
 $mysqli = new mysqli($dbHostname, $dbUser, $dbPassword, $dbName);
 
@@ -16,15 +19,18 @@ if (isset($_GET['user_id'])) {
     $user = $lesInformations->fetch_assoc();
     $userAlias = $user['alias'];
 } elseif (isset($_GET['tag_id'])) {
+
     $tagId = intval($_GET['tag_id']);
     $laQuestionEnSql = "SELECT * FROM tags WHERE id= '$tagId' ";
 
     $lesInformations = $mysqli->query($laQuestionEnSql);
     $tag = $lesInformations->fetch_assoc();
 } elseif ($pageTitle == 'admin') {
+
     $laQuestionEnSql = "SELECT * FROM `tags` LIMIT 50";
     $lesInformations = $mysqli->query($laQuestionEnSql);
 } elseif ($pageTitle == 'usurpedpost') {
+
     $laQuestionEnSql = "SELECT * FROM users";
     $lesInformations = $mysqli->query($laQuestionEnSql);
 }

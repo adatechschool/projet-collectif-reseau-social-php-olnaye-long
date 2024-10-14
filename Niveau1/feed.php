@@ -14,15 +14,18 @@
     <?php include './src/templates/header-template.php'; ?>
 
     <div id="wrapper">
+
         <?php
         include './src/methods/init-db.php';
         include './src/templates/aside-template.php';
         ?>
+        
         <main>
             <?php
             $laQuestionEnSql = "
                     SELECT posts.content,
                     posts.created,
+                    posts.id,
                     posts.user_id as user_id,
                     users.alias as author_name,
                     count(likes.id) as like_number,

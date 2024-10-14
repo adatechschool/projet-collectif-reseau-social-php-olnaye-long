@@ -13,7 +13,6 @@
 <body>
     <?php include './src/templates/header-template.php'; ?>
 
-
     <div id="wrapper">
 
         <?php
@@ -39,6 +38,7 @@
             // Etape 2: Poser une question à la base de donnée et récupérer ses informations
             $laQuestionEnSql = "
                     SELECT posts.content,
+                    posts.id,
                     posts.created,
                     posts.user_id as user_id,
                     users.alias as author_name,
