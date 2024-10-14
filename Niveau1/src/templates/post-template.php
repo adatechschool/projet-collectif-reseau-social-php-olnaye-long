@@ -7,46 +7,11 @@ include "password.php";
 
 
 $BDD = new mysqli($dbHostname, $dbUser, $dbPassword, $dbName);
-$sessionId = $_SESSION['connected_id'];   // user_id codé en dur
-
-// début de refacto, a retravailler si possible
-
-// function checkVotes($id, $query, $sessionId = 'user_id')
-// {
-//     global $BDD;
-
-//     $check_votes = $BDD->prepare($query);
-
-//     if ($check_votes === false) {
-//         die('Erreur lors de la préparation de la requête : ' . $BDD->error);
-//     }
-
-//     $check_votes->bind_param('is', $id, $sessionId);
-//     var_dump($check_votes);
-//     $check_votes->execute();
-
-//     $result = $check_votes->get_result();
-
-//     if ($sessionId == 'user_id') {
-//         if ($result->num_rows > 0) {
-//             $row = $result->fetch_assoc();
-//             return (int) $row['count'];
-//         } else {
-//             return 0;
-//         }
-//     } else {
-//         return $result;
-//     }
-// }
+$sessionId = $_SESSION['connected_id'];
 
 function getVotes($id)
 {
     global $BDD;
-
-    // $likesCount = checkVotes($id, 'SELECT COUNT(id) AS count FROM likes WHERE post_id = ? AND user_id = ?');
-    // $dislikesCount = checkVotes($id, 'SELECT COUNT(id) AS count FROM dislikes WHERE post_id = ? AND user_id = ?');
-    // echo $dislikesCount . " ";
-    // echo $likesCount;
 
     $check_all_likes = $BDD->prepare('SELECT COUNT(id) AS count FROM likes WHERE post_id = ?');
     $check_all_likes->bind_param('i', $id);
@@ -104,8 +69,6 @@ function downVote($id)
     if ($BDD->connect_error) {
         die('Erreur de connexion (' . $BDD->connect_errno . ') ' . $BDD->connect_error);
     }
-
-    // $result = checkVotes($id, 'SELECT id FROM dislikes WHERE post_id = ? AND user_id = ?', $sessionId);
 
     $check_dislike = $BDD->prepare('SELECT id FROM dislikes WHERE post_id = ? AND user_id = ?');
     $check_dislike->bind_param('ii', $id, $sessionId);
