@@ -72,13 +72,16 @@ $pageTitle = 'login';
                     if (password_verify($passwdAVerifier, $user['password'])) {
                         echo "Votre connexion est un succès : " . $user['alias'] . ".";
                         $_SESSION['connected_id'] = $user['id'];
-                        // header("Location :  Niveau1/news.php");
-                        // exit;
+                        header("Location:  news.php");
+                        exit();
                     } else {
                         echo "La connexion a échoué. ";
                     }
-                    if (isset($_POST['reset']) && ($_SESSION['connected_id'])) {
-                        unset($_SESSION['connected_id']);
+                    if (isset($_POST['reset']) && isset($_SESSION['connected_id'])) {
+                        session_unset();
+                        session_destroy();
+                        header("Location:  news.php");
+                        exit();
                     }
                 }
                 ?>
