@@ -165,14 +165,20 @@ while ($post = $lesInformations->fetch_assoc()) {
             <form method="post" action="">
                 <input type="hidden" name="id" value="<?= $post['id'] ?>">
 
-                <button onclick="upvote()" name="action" value="upVote">UpVote</button>
-                <button type="submit" name="action" value="downVote">DownVote</button>
+                <button type="submit" name="action" value="upVote" class= "likeButton">UpVote</button>
+                <button type="submit" name="action" value="downVote" class= "likeButton">DownVote</button>
             </form>
 
             <!-- @todo : boucle while pour itérer chaque tag  comme dans feed & tags-->
             <!-- @todo : gérer le lien à mettre dans l'attribut href pour rediriger vers l'id -->
             <a href="">#<?php echo $post['taglist'] ?></a>
         </footer>
+    <!-- onclick="myFunction()" <- dans le boutton
+     <script>
+         function myFunction() {
+            event.preventDefault()
+        };
+    </script> -->
     </article>
 <?php //}
 } ?>
