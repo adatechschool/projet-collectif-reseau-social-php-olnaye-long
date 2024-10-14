@@ -22,8 +22,7 @@ $pageTitle = 'post';
 
             <aside>
                 <h2>Présentation</h2>
-                <p>Sur cette page on peut poster un message en se faisant
-                    passer pour quelqu'un d'autre</p>
+                <p>T'as vraiment besoin qu'on t'expique à quoi ça sert de faire un poste ?</p>
             </aside>
 
             <main>
