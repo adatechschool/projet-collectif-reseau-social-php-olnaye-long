@@ -29,7 +29,7 @@ if (isset($_GET['user_id'])) {
 
     $laQuestionEnSql = "SELECT * FROM `tags` LIMIT 50";
     $lesInformations = $mysqli->query($laQuestionEnSql);
-} elseif ($pageTitle == 'usurpedpost') {
+} elseif ($pageTitle == 'post') {
 
     $laQuestionEnSql = "SELECT * FROM users";
     $lesInformations = $mysqli->query($laQuestionEnSql);
