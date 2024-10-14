@@ -32,9 +32,6 @@ $pageTitle = 'login';
                 // Etape 1 : vérifier si on est en train d'afficher ou de traiter le formulaire
                 // si on recoit un champs email rempli il y a une chance que ce soit un traitement
 
-                if (isset($_POST['reset'])) {
-                    unset($_SESSION['connected_id']);
-                }
 
                 $enCoursDeTraitement = isset($_POST['email']);
 
@@ -75,10 +72,13 @@ $pageTitle = 'login';
                     if (password_verify($passwdAVerifier, $user['password'])) {
                         echo "Votre connexion est un succès : " . $user['alias'] . ".";
                         $_SESSION['connected_id'] = $user['id'];
-                        // header("Location : news.php");
-                        // exit();
+                        // header("Location :  Niveau1/news.php");
+                        // exit;
                     } else {
                         echo "La connexion a échoué. ";
+                    }
+                    if (isset($_POST['reset']) && ($_SESSION['connected_id'])) {
+                        unset($_SESSION['connected_id']);
                     }
                 }
                 ?>
