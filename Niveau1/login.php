@@ -78,7 +78,6 @@ $pageTitle = 'login';
                         echo "La connexion a échoué. ";
                     }
                     if (isset($_POST['reset']) && isset($_SESSION['connected_id'])) {
-                        unset($_SESSION['connected_id']);
                         session_unset();
                         session_destroy();
                         header("Location:  news.php");
