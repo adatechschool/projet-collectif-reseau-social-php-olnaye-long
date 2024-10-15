@@ -1,6 +1,4 @@
 <?php
-
-session_start();
 $pageTitle = "logout" ?>
 
 <!doctype html>

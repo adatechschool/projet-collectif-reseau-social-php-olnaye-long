@@ -10,18 +10,23 @@ $pageTitle = 'login';
     <title>ReSoC - Connexion</title>
     <meta name="author" content="Julien Falconnet">
     <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
 
     <div id="wrapper">
 
-        <aside>
-            <h2>Présentation</h2>
+        <aside id="aside-login">
+            <img src=".\src\img\resoc-login.png" alt="Logo de notre réseau, une petite crotte qui brille et qui sourit">
+            <h1>Poopie</h1>
             <p>Bienvenue sur notre réseau social.</p>
         </aside>
         <main>
-            <article>
+            <article id="article-login" >
                 <h2>Connexion</h2>
                 <?php
                 /**
@@ -86,16 +91,17 @@ $pageTitle = 'login';
                         <dt><label for='motpasse'>Mot de passe</label></dt>
                         <dd><input type='password' name='motpasse' id="motpasse"></dd>
                     </dl>
-                    <input type='submit'>
+                    <input type='submit' value="Prout !">
                 </form>
-                <p>
-                    Pas de compte?
-                    <a href='registration.php'>Inscrivez-vous.</a>
-                </p>
-
             </article>
         </main>
     </div>
 </body>
+<footer id="footer-login" >
+    <p>
+        Envie d'être une petite crotte en or ✨ ?
+        <a href='registration.php'>Rejoins-nous !</a>
+    </p>
+</footer>
 
 </html>
