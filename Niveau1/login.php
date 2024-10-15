@@ -18,14 +18,14 @@ $pageTitle = 'login';
 
 <body>
 
-    <div id="wrapper">
+    <div id="wrapper" class="wrapper-login">
 
         <aside id="aside-login">
             <img src=".\src\img\resoc-login.png" alt="Logo de notre réseau, une petite crotte qui brille et qui sourit">
             <h1>Poopie</h1>
             <p>Bienvenue sur notre réseau social.</p>
         </aside>
-        <main>
+        <main id="main-login">
             <article id="article-login" >
                 <h2>Connexion</h2>
                 <?php

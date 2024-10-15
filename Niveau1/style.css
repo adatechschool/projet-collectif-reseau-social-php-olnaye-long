@@ -1,14 +1,24 @@
-
-
 body{
     background-color: #FFDBB5;
     font-family: Montserrat;
+		overflow: hidden;
 }
+
+#wrapper-login main {
+  overflow-y: hidden; /* Hide vertical scrollbar */
+  overflow-x: hidden; /* Hide horizontal scrollbar */
+}
+
+
 
 #wrapper #aside-login {
 	background-color: #6C4E31;
 }
 
+#wrapper #article-login {
+	background-color: #6C4E31;
+	flex: 2;
+}
 
 a{text-decoration: none; color:black;}
 a:hover{text-decoration: underline;}
@@ -35,16 +45,16 @@ body>header #menu a{
     text-align: center;
     padding-top:2em;
     border-right: 1px solid #99b;
-}
-body>header a:hover
-{
+	}
+	body>header a:hover
+	{
     background-color: #99b;
 }
 body>header ul{list-style: none;}
 body>header #user
 {
-    margin-left: auto;
-    flex:0.2;
+	margin-left: auto;
+	flex:0.2;
     border-left: 1px solid #99b;
 }
 body>header #user>a{
@@ -52,9 +62,9 @@ body>header #user>a{
     text-align: center;
     padding:2em 0;
     width:100%;
-}
-body>header #user ul{
-    display: none;
+	}
+	body>header #user ul{
+		display: none;
     position: absolute;
     padding:0;
     margin:0;
@@ -71,7 +81,7 @@ body>header #user ul li a{
     border-bottom: 1px solid #99b;
 }
 body>header #user:hover ul{
-    display:block;
+	display:block;
 }
 
 
@@ -80,9 +90,14 @@ body>header #user:hover ul{
     width:80em;
     margin:0 auto 2em auto;
 }
+
+.wrapper-login {
+	flex-direction: column;
+}
+
 #wrapper aside{
-    background-color: #fff;
-    flex:1;
+	background-color: #fff;
+	flex:1;
     padding:1em;
     border-radius: 1em;
 }
@@ -90,13 +105,13 @@ body>header #user:hover ul{
     display: block;
     width:50%;
     margin:auto;
-}
+	}
 
 #wrapper main{
     flex:3;
     padding-left:1em;
     height: 80vh;
-    overflow-y:  scroll;
+    /* overflow-y:  scroll; */
 }
 #wrapper main article{
     background-color: #fff;
