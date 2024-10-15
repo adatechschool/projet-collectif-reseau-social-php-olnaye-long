@@ -18,6 +18,7 @@ if (isset($_GET['user_id'])) {
     $lesInformations = $mysqli->query($laQuestionEnSql);
     $user = $lesInformations->fetch_assoc();
     $userAlias = $user['alias'];
+
 } elseif (isset($_GET['tag_id'])) {
 
     $tagId = intval($_GET['tag_id']);
@@ -25,11 +26,21 @@ if (isset($_GET['user_id'])) {
 
     $lesInformations = $mysqli->query($laQuestionEnSql);
     $tag = $lesInformations->fetch_assoc();
+
+} elseif (isset($_GET['post_id'])) {
+
+    $postId = intval($_GET['post_id']);
+    $laQuestionEnSql = "SELECT * FROM tags WHERE id= '$postId' ";
+
+    $lesInformations = $mysqli->query($laQuestionEnSql);
+    $post = $lesInformations->fetch_assoc();
+
 } elseif ($pageTitle == 'admin') {
 
     $laQuestionEnSql = "SELECT * FROM `tags` LIMIT 50";
     $lesInformations = $mysqli->query($laQuestionEnSql);
-} elseif ($pageTitle == 'post') {
+
+} elseif ($pageTitle == 'create-post') {
 
     $laQuestionEnSql = "SELECT * FROM users";
     $lesInformations = $mysqli->query($laQuestionEnSql);

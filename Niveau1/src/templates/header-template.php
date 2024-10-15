@@ -10,7 +10,7 @@ if (isset($_SESSION['connected_id'])) {
             <a href="wall.php?user_id=<?= $userId ?>">Mur</a>
             <a href="feed.php?user_id=<?= $userId ?>">Flux</a>
             <a href="tags.php?tag_id=1">Mots-clés</a>
-            <a href="post.php">Ecrire un post</a>
+            <a href="create-post.php">Ecrire un post</a>
         </nav>
         <nav id="user">
             <a href="#">Profil</a>

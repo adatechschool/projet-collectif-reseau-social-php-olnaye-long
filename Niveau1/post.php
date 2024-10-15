@@ -1,68 +1,39 @@
-<?php
-$pageTitle = 'post';
-?>
 <!doctype html>
 <html lang="fr">
 
 <head>
     <meta charset="utf-8">
-    <title>ReSoC - Post d'usurpateur</title>
+    <title>ReSoC - Commentaires</title>
     <meta name="author" content="Julien Falconnet">
     <link rel="stylesheet" href="style.css" />
+</head>
 
-    <?php include '..//Niveau1/src/templates/header-template.php' ?>
-
+<body>
+    <?php include './src/templates/header-template.php';?>
 
     <div id="wrapper">
 
-        <aside>
-            <h2>Présentation</h2>
-            <p>T'as vraiment besoin qu'on t'explique à quoi ça sert de faire un poste ?</p>
-        </aside>
+        <?php
+        include './src/methods/init-db.php';
+        // include './src/templates/aside-template.php';
+        ?>
 
         <main>
-            <article>
-                <h2>Poster un message</h2>
-                <?php
-                include './src/methods/init-db.php';
-
-                $enCoursDeTraitement = isset($_POST['message']);
-                if ($enCoursDeTraitement) {
-                    $authorId = $userId;
-                    $postContent = $_POST['message'];
-
-                    $authorId = intval($authorId);
-
-                    $postContent = $mysqli->real_escape_string($postContent);
-
-                    //Etape 4 : construction de la requete
-                    $lInstructionSql = "INSERT INTO posts "
-                        . "(id, user_id, content, created) "
-                        . "VALUES (NULL, "
-                        . $authorId . ", "
-                        . "'" . $postContent . "', "
-                        . "NOW());";
-
-                    // Etape 5 : execution
-                    $ok = $mysqli->query($lInstructionSql);
-                    if (! $ok) {
-                        echo "Impossible d'envoyer le message: " . $mysqli->error;
-                    } else {
-                        echo "Message envoyé !";
-                        header( "Refresh:3; url=news.php", true, 303);
-                    }
-                }
-                ?>
-                <form action="post.php" method="post">
-                    <dl>
-                        <dt><label for='message'>Message</label></dt>
-                        <dd><textarea name='message'></textarea></dd>
-                    </dl>
-                    <input type='submit'>
-                </form>
-            </article>
+            <?php
+            $postId = intval($_GET['post_id']);
+            $laQuestionEnSql = "
+                    SELECT posts.content, posts.created, posts.id,
+                    users.alias as author_name,
+                    posts.user_id as user_id
+                    FROM posts
+                    JOIN users ON  users.id=posts.user_id
+                    WHERE posts.id='$postId'
+                    ";
+            include './src/methods/fetch.php';
+            include './src/templates/comments.php';
+            ?>
         </main>
     </div>
-    </body>
+</body>
 
 </html>
