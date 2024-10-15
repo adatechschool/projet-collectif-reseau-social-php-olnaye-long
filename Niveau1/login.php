@@ -21,12 +21,15 @@ $pageTitle = 'login';
     <div id="wrapper" class="wrapper-login">
 
         <aside id="aside-login">
-            <img src=".\src\img\resoc-login.png" alt="Logo de notre réseau, une petite crotte qui brille et qui sourit">
-            <h1>Poopie</h1>
-            <p>Bienvenue sur notre réseau social.</p>
+            <img src=".\src\img\resoc-login.png" alt="Logo de notre réseau, une petite crotte qui brille et qui sourit"
+                id="login-img">
+            <div class="login-title">
+                <h1 class="login-h1">Poopie</h1>
+                <p class="login-p"><br />Quitte à dire de la merde...</p>
+            </div>
         </aside>
         <main id="main-login">
-            <article id="article-login" >
+            <article id="article-login">
                 <h2>Connexion</h2>
                 <?php
                 /**
@@ -97,7 +100,7 @@ $pageTitle = 'login';
         </main>
     </div>
 </body>
-<footer id="footer-login" >
+<footer id="footer-login">
     <p>
         Envie d'être une petite crotte en or ✨ ?
         <a href='registration.php'>Rejoins-nous !</a>
