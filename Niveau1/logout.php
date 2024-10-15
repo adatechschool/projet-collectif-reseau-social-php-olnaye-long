@@ -1,4 +1,7 @@
-<?php $pageTitle = "logout" ?>
+<?php
+
+session_start();
+$pageTitle = "logout" ?>
 
 <!doctype html>
 <html lang="fr">
