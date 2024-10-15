@@ -1,22 +1,28 @@
 <?php
 if (isset($post['taglist'])) {
-    $tagLink = $post['taglist'];
-    $getTagId = $BDD->prepare('SELECT id, label FROM tags WHERE label = ?');
-    $getTagId->bind_param('s', $tagLink);
-    $getTagId->execute();
-    $result = $getTagId->get_result();
-    $hashtag = $result->fetch_assoc();
+    $tagList = $post['taglist'];
+    $tagsArray = explode(",", $tagList);
+    for ($i = 0; $i < count($tagsArray); $i++) {
 
-    if ($hashtag) {
-        $tagIdLink = $hashtag['id'];
-        echo $tagIdLink;
+        $getTagId = $BDD->prepare('SELECT id, label FROM tags WHERE label = ?');
+        $getTagId->bind_param('s', $tagsArray[$i]);
+        $getTagId->execute();
+        $result = $getTagId->get_result();
+        $hashtag = $result->fetch_assoc();
+
+        try {
+            if (!$hashtag) {
+                echo "Echo : No tag found";
+                throw new Exception("Exception : No tag found");
+            }
+            $tagIdLink = $hashtag['id'];
+        } catch (Exception $error) {
+            echo $error->getMessage();
+        }
+
 ?>
-        <!-- @todo : boucle while pour itérer chaque tag  comme dans feed & tags-->
-        <!-- @todo : gérer le lien à mettre dans l'attribut href pour rediriger vers l'id -->
-        <a href="tags.php?tag_id=<?= $tagIdLink ?>">#<?= $post['taglist'] ?></a>
+        <a href="tags.php?tag_id=<?= $tagIdLink ?>">#<?= $hashtag['label'] ?></a>
 <?php
-    } else {
-        echo "No tag found.";
     }
 }
 ?>
