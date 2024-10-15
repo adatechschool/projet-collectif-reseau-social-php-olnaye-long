@@ -1,5 +1,5 @@
 <?php
-$pageTitle = 'post';
+$pageTitle = 'create-post';
 ?>
 <!doctype html>
 <html lang="fr">
@@ -54,37 +54,38 @@ $pageTitle = 'post';
                 }
 
                 preg_match_all('/#(\w+)/', $postContent, $matches);
+                $hashtagArray = [];
                 foreach ($matches[1] as $match) {
                     $hashtagArray[] = $match;
                 }
 
-                for ($i = 0; $i < $hashtagArray; $i++) {
+                for ($i = 0; $i < count($hashtagArray); $i++) {
                     $findHashtags = $mysqli->prepare('SELECT id, label FROM tags WHERE label = ?');
                     $findHashtags->bind_param('s', $hashtagArray[$i]);
                     $findHashtags->execute();
                     $result = $findHashtags->get_result();
-                    $findHashtags->store_result();
                     $tagToLinkToPost = $result->fetch_assoc();
-                    if ($findHashtags->num_rows == 0) {
+
+                    if ($tagToLinkToPost === null) {
                         $insertHashtags = $mysqli->prepare('INSERT INTO tags (`label`) VALUES (?)');
                         $insertHashtags->bind_param('s', $hashtagArray[$i]);
                         $insertHashtags->execute();
+                        $tagToLinkToPost['id'] = $mysqli->insert_id;
                     }
-
 
                     $findPostId = $mysqli->prepare('SELECT id, user_id, content FROM posts WHERE user_id = ? AND content = ?');
                     $findPostId->bind_param('ss', $authorId, $postContent);
                     $findPostId->execute();
-                    $findHashtags->store_result();
                     $result = $findPostId->get_result();
                     $postToLinkToTag = $result->fetch_assoc();
 
                     $linkHashtagsToPost = $mysqli->prepare('INSERT INTO posts_tags (`post_id`, `tag_id`) VALUES (?, ?)');
                     $linkHashtagsToPost->bind_param('ii', $postToLinkToTag['id'], $tagToLinkToPost['id']);
+                    $linkHashtagsToPost->execute();
                 }
             }
             ?>
-            <form action="post.php" method="post">
+            <form action="create-post.php" method="post">
                 <dl>
                     <dt><label for='message'>Message</label></dt>
                     <dd><textarea name='message'></textarea></dd>
