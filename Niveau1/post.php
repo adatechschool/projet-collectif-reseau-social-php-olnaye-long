@@ -15,7 +15,7 @@
 
         <?php
         include './src/methods/init-db.php';
-        include './src/templates/aside-template.php';
+        // include './src/templates/aside-template.php';
         ?>
 
         <main>
