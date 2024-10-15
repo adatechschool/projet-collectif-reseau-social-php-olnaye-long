@@ -18,8 +18,11 @@ if (isset($_SESSION['connected_id'])) {
                 <li><a href="settings.php?user_id=<?= $userId ?>">Paramètres</a></li>
                 <li><a href="followers.php?user_id=<?= $userId ?>">Mes suiveurs</a></li>
                 <li><a href="subscriptions.php?user_id=<?= $userId ?>">Mes abonnements</a></li>
+                <li><a href="logout.php" id="openPopup">Se deconnecter</a></li>
+              
             </ul>
         </nav>
     </header>
 <?php }
 ?>
+

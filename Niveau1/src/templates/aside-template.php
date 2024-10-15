@@ -12,6 +12,8 @@
             echo ($pageTitle == 'subscriptions') ? "Sur cette page vous trouverez la liste des personnes que {$userAlias} suit." : "";
             echo ($pageTitle == 'tags') ? "Sur cette page vous trouverez les derniers messages comportant le mot-clé {$tag['label']}." : "";
             echo ($pageTitle == 'wall') ? "Sur cette page vous trouverez tous les messages de {$userAlias}." : "";
+            echo ($pageTitle == 'logout') ? "Page de déconnexion" : "";
+
             ?>
         </p>
 
