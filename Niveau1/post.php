@@ -49,6 +49,7 @@ $pageTitle = 'post';
                         echo "Impossible d'envoyer le message: " . $mysqli->error;
                     } else {
                         echo "Message envoyé !";
+                        header( "Refresh:3; url=news.php", true, 303);
                     }
                 }
                 ?>
