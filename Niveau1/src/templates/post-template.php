@@ -23,8 +23,7 @@ if (!isset($_SESSION['connected_id'])) {
     }
 
     while ($post = $lesInformations->fetch_assoc()) {
-
-?>
+        ?>
 
         <article>
             <?= $post['id'] ?>
@@ -45,6 +44,7 @@ if (!isset($_SESSION['connected_id'])) {
                     <button type="submit" name="action" value="upVote" class="likeButton">UpVote</button>
                     <button type="submit" name="action" value="downVote" class="likeButton">DownVote</button>
                 </form>
+                <button onclick="location.href = 'src/templates/comments.php?post_id=<?= $post['id'] ?>';">Commentaires</button>
 
                 <!-- @todo : boucle while pour itérer chaque tag  comme dans feed & tags-->
                 <!-- @todo : gérer le lien à mettre dans l'attribut href pour rediriger vers l'id -->
