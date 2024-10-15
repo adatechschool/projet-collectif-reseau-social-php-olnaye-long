@@ -12,7 +12,6 @@ if (isset($post['taglist'])) {
 
         try {
             if (!$hashtag) {
-                echo "Echo : No tag found";
                 throw new Exception("Exception : No tag found");
             }
             $tagIdLink = $hashtag['id'];
