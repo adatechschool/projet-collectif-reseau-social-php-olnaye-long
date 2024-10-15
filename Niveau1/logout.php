@@ -11,30 +11,29 @@
 </head>
 
 <body>
-    <?php include './src/templates/header-template.php'; ?>
-
-    <div id="wrapper" class='profile'>
-
-        <?php
-        include './src/methods/init-db.php';
-        include './src/templates/aside-template.php';
-        if (isset($_POST['reset']) && isset($_SESSION['connected_id'])) {
-            session_unset();
-            session_destroy();
-            header("Location:  login.php");
-            exit();
-        }
-        ?>
-
+    <?php include './src/methods/init-db.php';
+    include './src/templates/header-template.php';
+    ?>
+    <div id="wrapper" class='logout'>
         <main>
-            <article class="parameters">
-                <form action="login.php" method="post">
-                    <p>Voulez-vous vous déconnecter ?</p>
-                    <input type="submit" value="Deconnexion" name="reset">
+            <article>
+
+                <h2>Deconnexion</h2>
+                <?php
+                if (isset($_POST['confirm']) && isset($_SESSION['connected_id'])) {
+                    session_unset();
+                    session_destroy();
+                    echo "Ca marche ou merde ?!";
+                    header("Location:  login.php");
+                    exit();
+                }
+                ?>
+                <form action="logout.php" method="POST">
+                    <dt><label for='deconnexion'>T'es sûr.e de vouloir nous quitter ?</label></dt>
+                    <input type="submit" name="confirm" id ="deconnexion" value="Bye bye" />
+                </form>
             </article>
         </main>
-        </form>
     </div>
 </body>
-
 </html>
