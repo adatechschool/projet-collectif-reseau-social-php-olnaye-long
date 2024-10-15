@@ -63,3 +63,37 @@ $post = $lesInformations->fetch_assoc()
         <input type='submit'>
     </form>
 </article>
+
+<?php
+$laQuestionEnSql = "SELECT comments.content, comments.created, comments.id, comments.user_id, users.alias
+                    FROM comments
+                    JOIN users ON users.id = comments.user_id
+                    WHERE comments.parent_id = " . $post['id'] . "; 
+                    ";
+include './src/methods/fetch.php';  
+while ($comment = $lesInformations->fetch_assoc()) {
+    ?>
+    <article>
+        <?= $comment['id'] ?>
+        <h3>
+            <time datetime='2020-02-01 11:12:13'><?= $comment['created'] ?></time>
+        </h3>
+        <address>par <a href="./wall.php?user_id=<?= $comment['user_id'] ?>"> <?= $comment['alias'] ?></a></address>
+        <div>
+            <p><?= $comment['content'] ?></p>
+        </div>
+
+        <footer>
+            <small>♥ <?= getVotes($comment['id']) ?></small>
+
+            <form method="post" action="">
+                <input type="hidden" name="id" value="<?= $comment['id'] ?>">
+
+                <button type="submit" name="action" value="upVote" class="likeButton">UpVote</button>
+                <button type="submit" name="action" value="downVote" class="likeButton">DownVote</button>
+            </form>
+            <?php include './src/methods/get-tag-id.php' ?>
+        </footer>
+
+    </article>
+<?php } ?>
