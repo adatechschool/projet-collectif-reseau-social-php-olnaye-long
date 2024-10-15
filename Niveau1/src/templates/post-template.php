@@ -6,22 +6,6 @@ if (!isset($_SESSION['connected_id'])) {
     include "password.php";
     include "./src/methods/like.php";
 
-    // Vérifier si le formulaire a été soumis
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        // Vérifier quelle fonction appeler en fonction du bouton cliqué
-        if (isset($_POST['action']) && isset($_POST['id'])) {
-            $id = $_POST['id'];
-            switch ($_POST['action']) {
-                case 'upVote':
-                    upvote($id);
-                    break;
-                case 'downVote':
-                    downVote($id);
-                    break;
-            }
-        }
-    }
-
     while ($post = $lesInformations->fetch_assoc()) {
         ?>
 
