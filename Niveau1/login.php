@@ -75,12 +75,7 @@ $pageTitle = 'login';
                     } else {
                         echo "La connexion a échoué. ";
                     }
-                    if (isset($_POST['reset']) && isset($_SESSION['connected_id'])) {
-                        session_unset();
-                        session_destroy();
-                        header("Location:  news.php");
-                        exit();
-                    }
+
                 }
                 ?>
                 <form action="login.php" method="post">
@@ -92,7 +87,6 @@ $pageTitle = 'login';
                         <dd><input type='password' name='motpasse' id="motpasse"></dd>
                     </dl>
                     <input type='submit'>
-                    <input type="submit" value="logout" name="reset">
                 </form>
                 <p>
                     Pas de compte?
