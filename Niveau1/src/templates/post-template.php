@@ -24,7 +24,7 @@ if (!isset($_SESSION['connected_id'])) {
 
     while ($post = $lesInformations->fetch_assoc()) {
 
-        ?>
+?>
 
         <article>
             <?= $post['id'] ?>
@@ -48,7 +48,7 @@ if (!isset($_SESSION['connected_id'])) {
 
                 <!-- @todo : boucle while pour itérer chaque tag  comme dans feed & tags-->
                 <!-- @todo : gérer le lien à mettre dans l'attribut href pour rediriger vers l'id -->
-                <a href="">#<?php echo $post['taglist'] ?></a>
+                <?php include './src/methods/get-tag-id.php' ?>
             </footer>
             <!-- onclick="myFunction()" <- dans le boutton
      <script>
@@ -57,5 +57,5 @@ if (!isset($_SESSION['connected_id'])) {
         };
     </script> -->
         </article>
-    <?php }
+<?php }
 } ?>
