@@ -3,7 +3,7 @@
 include "./src/methods/like.php";
 
 $post = $lesInformations->fetch_assoc();
-if ($post['parent_id']) {
+if (!$post['parent_id']) {
     ?>
 
 <article>
@@ -17,7 +17,7 @@ if ($post['parent_id']) {
     </div>
 
     <footer>
-        <small>♥ <?= getVotes($post['id']) ?></small>
+        <small>💩 <?= getVotes($post['id']) ?></small>
 
         <form method="post" action="">
             <input type="hidden" name="id" value="<?= $post['id'] ?>">
@@ -88,7 +88,7 @@ while ($comment = $lesInformations->fetch_assoc()) {
         </div>
 
         <footer>
-            <small>♥ <?= getVotes($comment['id']) ?></small>
+            <small>💩 <?= getVotes($comment['id']) ?></small>
 
             <form method="post" action="">
                 <input type="hidden" name="id" value="<?= $comment['id'] ?>">
