@@ -6,24 +6,7 @@ if (!isset($_SESSION['connected_id'])) {
     include "password.php";
     include "./src/methods/like.php";
 
-    // Vérifier si le formulaire a été soumis
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        // Vérifier quelle fonction appeler en fonction du bouton cliqué
-        if (isset($_POST['action']) && isset($_POST['id'])) {
-            $id = $_POST['id'];
-            switch ($_POST['action']) {
-                case 'upVote':
-                    upvote($id);
-                    break;
-                case 'downVote':
-                    downVote($id);
-                    break;
-            }
-        }
-    }
-
     while ($post = $lesInformations->fetch_assoc()) {
-
         ?>
 
         <article>
@@ -45,10 +28,11 @@ if (!isset($_SESSION['connected_id'])) {
                     <button type="submit" name="action" value="upVote" class="likeButton">UpVote</button>
                     <button type="submit" name="action" value="downVote" class="likeButton">DownVote</button>
                 </form>
+                <button onclick="location.href = 'post.php?post_id=<?= $post['id'] ?>';">Commentaires</button>
 
                 <!-- @todo : boucle while pour itérer chaque tag  comme dans feed & tags-->
                 <!-- @todo : gérer le lien à mettre dans l'attribut href pour rediriger vers l'id -->
-                <a href="">#<?php echo $post['taglist'] ?></a>
+                <?php include './src/methods/get-tag-id.php' ?>
             </footer>
             <!-- onclick="myFunction()" <- dans le boutton
      <script>
@@ -57,5 +41,5 @@ if (!isset($_SESSION['connected_id'])) {
         };
     </script> -->
         </article>
-    <?php }
+<?php }
 } ?>

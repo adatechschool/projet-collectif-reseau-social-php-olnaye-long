@@ -84,6 +84,21 @@ function downVote($id)
     }
 }
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Vérifier quelle fonction appeler en fonction du bouton cliqué
+    if (isset($_POST['action']) && isset($_POST['id'])) {
+        $id = $_POST['id'];
+        switch ($_POST['action']) {
+            case 'upVote':
+                upvote($id);
+                break;
+            case 'downVote':
+                downVote($id);
+                break;
+        }
+    }
+}
+
 // début de refacto, a retravailler si possible
 
 // function checkVotes($id, $query, $sessionId = 'user_id')
