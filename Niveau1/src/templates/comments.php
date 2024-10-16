@@ -45,9 +45,7 @@ if (!$post['parent_id']) {
             . $authorId . ", "
             . "'" . $postContent . "', "
             . "NOW(),"
-            . $post['id'] . ", "
-            . "0"
-            . ");";
+            . $post['id'] . ");";
 
         // Etape 5 : execution
         $ok = $mysqli->query($lInstructionSql);
