@@ -100,12 +100,12 @@ $pageTitle = 'login';
             </article>
         </main>
     </div>
+    <footer id="footer-login">
+        <p>
+            Envie d'être une petite crotte en or ✨ ?
+            <a href='registration.php'>Rejoins-nous !</a>
+        </p>
+    </footer>
 </body>
-<footer id="footer-login">
-    <p>
-        Envie d'être une petite crotte en or ✨ ?
-        <a href='registration.php'>Rejoins-nous !</a>
-    </p>
-</footer>
 
 </html>
