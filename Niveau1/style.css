@@ -56,16 +56,19 @@ body > header #user ul {
 	padding: 0;
 	margin: 0;
 	margin-left: -5em;
-	background-color: #fff;
-	border: 1px solid #99b;
-
+	border-bottom-right-radius: 25px;
+	border-bottom-left-radius: 25px;
 	z-index: 1;
 }
 body > header #user ul li a {
+	background-color: #603F26;
+	text-decoration: none;
+	font-weight: bold;
+	color: #FFDBB5;
 	display: block;
 	width: 10em;
 	padding: 1em;
-	border-bottom: 1px solid #99b;
+
 }
 body > header #user:hover ul {
 	display: block;
