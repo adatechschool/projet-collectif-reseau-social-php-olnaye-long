@@ -299,14 +299,14 @@ button:hover {
 		font-size: 1.5em;
 	}
 	h2 {
-		font-size: 3em;
+		font-size: 6vh;
 		text-align: center;
 		margin: 0;
 	}
 	input[type="email"],
 	input[type="password"] {
 		width: 50%; /* Champs prennent toute la largeur */
-		padding: 10px 15px; /* Ajoute un peu de padding pour le style */
+		padding: 1vh 1.5vh; /* Ajoute un peu de padding pour le style */
 		border-radius: 25px;
 	}
 	.login-input {
