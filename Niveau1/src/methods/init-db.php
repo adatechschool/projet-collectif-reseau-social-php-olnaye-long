@@ -10,6 +10,9 @@ if ($mysqli->connect_errno) {
     echo ("Échec de la connexion : " . $mysqli->connect_error);
     exit();
 }
+
+error_reporting(E_ALL);
+
 // Etape 1: Les paramètres concernent une utilisatrice en particulier
 if (isset($_GET['user_id'])) {
     $userId = intval($_GET['user_id']);

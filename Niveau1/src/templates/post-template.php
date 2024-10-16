@@ -4,11 +4,10 @@ if (!isset($_SESSION['connected_id'])) {
 } else {
 
     include "password.php";
-    include "./src/methods/like.php";
 
     while ($post = $lesInformations->fetch_assoc()) {
 
-?>
+        ?>
 
         <article>
             <?= $post['id'] ?>
@@ -28,8 +27,9 @@ if (!isset($_SESSION['connected_id'])) {
 
                     <button type="submit" name="action" value="upVote" class="likeButton">UpVote</button>
                     <button type="submit" name="action" value="downVote" class="likeButton">DownVote</button>
+                    <button type="button"onclick="location.href = 'post.php?post_id=<?= $post['id'] ?>';">Commentaires</button>
                 </form>
-                <button type="button" onclick="location.href = 'post.php?post_id=<?= $post['id'] ?>';">Commentaires</button>
+
 
                 <?php include './src/methods/get-tag-id.php' ?>
             </footer>
@@ -40,5 +40,5 @@ if (!isset($_SESSION['connected_id'])) {
         };
     </script> -->
         </article>
-<?php }
+    <?php }
 } ?>

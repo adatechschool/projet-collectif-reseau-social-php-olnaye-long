@@ -3,7 +3,6 @@
 include "./src/methods/like.php";
 
 $post = $lesInformations->fetch_assoc();
-if (!$post['parent_id']) {
     ?>
 
 <article>
@@ -66,37 +65,12 @@ if (!$post['parent_id']) {
 </article>
 
 <?php
-$laQuestionEnSql = "SELECT posts.content, posts.created, posts.id, posts.user_id, users.alias
+$laQuestionEnSql = "SELECT posts.content, posts.created, posts.id, posts.user_id, users.alias as author_name
                     FROM posts
                     JOIN users ON users.id = posts.user_id
                     WHERE posts.parent_id = " . $post['id'] . "; 
                     ";
 
 include './src/methods/fetch.php';  
-while ($comment = $lesInformations->fetch_assoc()) {
-    ?>
-    <article>
-        <?= $comment['id'] ?>
-        <h3>
-            <time datetime='2020-02-01 11:12:13'><?= $comment['created'] ?></time>
-        </h3>
-        <address>par <a href="./wall.php?user_id=<?= $comment['user_id'] ?>"> <?= $comment['alias'] ?></a></address>
-        <div>
-            <p><?= $comment['content'] ?></p>
-        </div>
-
-        <footer>
-            <small>💩 <?= getVotes($comment['id']) ?></small>
-
-            <form method="post" action="">
-                <input type="hidden" name="id" value="<?= $comment['id'] ?>">
-
-                <button type="submit" name="action" value="upVote" class="likeButton">UpVote</button>
-                <button type="submit" name="action" value="downVote" class="likeButton">DownVote</button>
-                <button onclick="location.href = 'post.php?post_id=<?= $comment['id'] ?>';">Commentaires</button>
-            </form>
-            <?php include './src/methods/get-tag-id.php' ?>
-        </footer>
-
-    </article>
-<?php }} ?>
+include './src/templates/post-template.php';
+?>
