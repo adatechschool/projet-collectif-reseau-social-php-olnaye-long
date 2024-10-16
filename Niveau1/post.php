@@ -26,7 +26,7 @@ $pageTitle = 'post';
             <?php
             $postId = intval($_GET['post_id']);
             $laQuestionEnSql = "
-                    SELECT posts.content, posts.created, posts.id,
+                    SELECT posts.content, posts.created, posts.id, parent_id,
                     users.alias as author_name,
                     posts.user_id as user_id
                     FROM posts

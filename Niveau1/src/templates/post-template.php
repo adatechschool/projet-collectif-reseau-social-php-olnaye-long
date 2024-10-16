@@ -7,6 +7,7 @@ if (!isset($_SESSION['connected_id'])) {
     include "./src/methods/like.php";
 
     while ($post = $lesInformations->fetch_assoc()) {
+
         ?>
 
         <article>
@@ -20,7 +21,7 @@ if (!isset($_SESSION['connected_id'])) {
             </div>
 
             <footer>
-                <small>♥ <?= getVotes($post['id']) ?></small>
+                <small>💩 <?= getVotes($post['id']) ?></small>
 
                 <form method="post" action="">
                     <input type="hidden" name="id" value="<?= $post['id'] ?>">
@@ -30,8 +31,6 @@ if (!isset($_SESSION['connected_id'])) {
                 </form>
                 <button onclick="location.href = 'post.php?post_id=<?= $post['id'] ?>';">Commentaires</button>
 
-                <!-- @todo : boucle while pour itérer chaque tag  comme dans feed & tags-->
-                <!-- @todo : gérer le lien à mettre dans l'attribut href pour rediriger vers l'id -->
                 <?php include './src/methods/get-tag-id.php' ?>
             </footer>
             <!-- onclick="myFunction()" <- dans le boutton
@@ -41,5 +40,4 @@ if (!isset($_SESSION['connected_id'])) {
         };
     </script> -->
         </article>
-<?php }
-} ?>
+<?php }} ?>
