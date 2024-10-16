@@ -1,6 +1,12 @@
 <aside>
+    <?php
+    if (!in_array($pageTitle, ['news', 'tags', 'logout'])) {
+    ?>
 
-    <img src="./src/img/user.jpg" alt="Portrait de l'utilisatrice" />
+        <img src="./src/img/uploads/<?= $user['profile_pic'] ?>" alt="Portrait de l'utilisatrice" />
+    <?php } else { ?>
+        <img src="./src/img/user.jpg" alt="Portrait de l'utilisatrice" />
+    <?php } ?>
     <?php include './src/methods/follow.php' ?>
     <section>
         <h3>Présentation</h3>
@@ -13,7 +19,6 @@
             echo ($pageTitle == 'tags') ? "Sur cette page vous trouverez les derniers messages comportant le mot-clé {$tag['label']}." : "";
             echo ($pageTitle == 'wall') ? "Sur cette page vous trouverez tous les messages de {$userAlias}." : "";
             echo ($pageTitle == 'logout') ? "Page de déconnexion" : "";
-
             ?>
         </p>
 
