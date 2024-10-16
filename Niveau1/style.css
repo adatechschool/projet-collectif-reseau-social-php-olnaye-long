@@ -3,7 +3,7 @@ body {
 	font-family: Montserrat;
 	overflow-x: hidden;
 	overflow-y: auto;
-
+	color : #603F26;
 }
 
 body > header {
@@ -116,7 +116,8 @@ body > header #user:hover ul {
 	/* overflow-y:  scroll; */
 }
 #wrapper main article {
-	background-color: #fff;
+	color: #603F26;
+	background-color: #FFEAC5;
 	padding: 1em;
 	margin-bottom: 1em;
 	border-radius: 1em;
@@ -210,6 +211,32 @@ pre {
 	color: #aaa;
 }
 
+#create-post-input {
+	background-color: #603F26;
+	color: #FFDBB5;
+	font-weight: bold;
+	border-radius: 25px;
+}
+
+/* POST BUTTON */
+button {
+	background-color: #603F26;
+	font-family: Montserrat;
+	color: #FFDBB5;
+	font-weight: bold;
+	border-radius: 25px;
+}
+button:hover{
+	background-color: #FFDBB5;
+	color: #603F26;
+}
+.post-form {
+	display: flex;
+	flex-direction: column;  /* Aligner les éléments verticalement */
+	justify-content: flex-start;  /* Aligner le contenu vers le haut */
+	align-items: center; /* Centrer les éléments horizontalement */
+	width: 100%; /* Adapte la largeur au besoin */
+}
 
 /* PAGE LOGIN */
 
