@@ -6,7 +6,6 @@ $post = $lesInformations->fetch_assoc();
     ?>
 
 <article>
-    <?= $post['id'] ?>
     <h3>
         <time datetime='2020-02-01 11:12:13'><?= $post['created'] ?></time>
     </h3>

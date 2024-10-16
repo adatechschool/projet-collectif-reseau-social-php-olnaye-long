@@ -11,7 +11,6 @@ if (!isset($_SESSION['connected_id'])) {
         ?>
 
         <article style="position: relative; left:<?= $indentation ?>px">
-            <?= $post['id'] ?>
             <h3>
                 <time datetime='2020-02-01 11:12:13'><?= $post['created'] ?></time>
             </h3>
@@ -28,7 +27,8 @@ if (!isset($_SESSION['connected_id'])) {
 
                     <button type="submit" name="action" value="upVote" class="likeButton">UpVote</button>
                     <button type="submit" name="action" value="downVote" class="likeButton">DownVote</button>
-                    <button type="button" onclick="location.href = 'post.php?post_id=<?= $post['id'] ?>';">Commentaires</button>
+                    <button type="button" onclick="location.href = 'post.php?post_id=<?= $post['id'] ?>';"><?php if (isset($_GET['post_id'])) {
+            echo 'Commenter';} else {echo 'Commentaires';} ?></button>
                 </form>
 
 
