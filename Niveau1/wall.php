@@ -35,17 +35,13 @@
                     LEFT JOIN tags       ON posts_tags.tag_id  = tags.id
                     LEFT JOIN likes      ON likes.post_id  = posts.id
                     WHERE posts.user_id='$userId'
+                    AND parent_id IS NULL
                     GROUP BY posts.id
                     ORDER BY posts.created DESC
                     ";
             include './src/methods/fetch.php';
             include './src/templates/post-template.php';
             ?>
-            <script>
-                <?php echo "<pre>" . print_r($post, 1) . "</pre>" ?>
-                // Utiliser PHP pour injecter une variable dans JavaScript
-                console.log("<?php echo $lesInformations; ?>");
-            </script>
         </main>
     </div>
 </body>

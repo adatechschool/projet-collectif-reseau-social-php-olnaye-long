@@ -50,6 +50,7 @@
                     LEFT JOIN posts_tags ON posts.id = posts_tags.post_id
                     LEFT JOIN tags       ON posts_tags.tag_id  = tags.id
                     LEFT JOIN likes      ON likes.post_id  = posts.id
+                    WHERE parent_id IS NULL
                     GROUP BY posts.id
                     ORDER BY posts.created DESC
                     LIMIT 5

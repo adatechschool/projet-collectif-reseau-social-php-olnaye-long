@@ -42,9 +42,7 @@ $pageTitle = 'create-post';
                 . $authorId . ", "
                 . "'" . $postContent . "', "
                 . "NOW(), "
-                . "NULL, "
-                . "1"
-                . ");";
+                . "NULL);";
 
                 // Etape 5 : execution
                 $ok = $mysqli->query($lInstructionSql);
