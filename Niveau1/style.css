@@ -213,7 +213,7 @@ pre {
 		gap: 20px; /* Espacement entre l'image et le texte */
 		text-align: left; /* Le texte reste aligné à gauche */
 
-		h1, p {
+		 h1,p {
 			color: #ffdbb5;
 			margin: 0;
 			padding: 0;
@@ -237,20 +237,12 @@ pre {
 		background-color: #6c4e31;
 		color: #ffdbb5;
 		margin-top: 2em;
-		/* flex: 2; */
-		position: relative;
-
-		dl, label, h2, input {
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-		}
+		flex: 2;
 
 		dl {
-			/* display: flex;
-			flex-direction: column; */
-			/* align-items: center; Aligne les labels et inputs en colonne */
+			display: flex;
+			flex-direction: column;
+			align-items: center; /* Aligne les labels et inputs en colonne */
 			width: 50%; /* Occupe toute la largeur du conteneur */
 		}
 		label {
@@ -259,7 +251,7 @@ pre {
 			font-size: 2em;
 		}
 		h2 {
-			font-size: 3em;
+			font-size: 4em;
 			text-align: center;
 			padding-top: 0.5 em;
 		}
@@ -269,9 +261,21 @@ pre {
 			padding: 10px; /* Ajoute un peu de padding pour le style */
 			margin-bottom: 15px; /* Espacement en bas des champs */
 		}
-		input[type="submit"]:hover {
-			background-color: #5b3e29; /* Change la couleur au survol */
+		#connexion {
+			padding: 1rem;
+			font-size: 2em;
+			font-weight: bold;
+			font-family: Montserrat;
+			color: #FFEAC5;
+			background-color: #422c1b;
+			border-radius: 25px;
+			width: 50%;
+			box-shadow: inset 5px 5px 5px black;
+
 		}
+	#connexion:hover {
+		background-color: #603F26; /* Change la couleur au survol */
+		color: #FFDBB5;
 	}
 
 	a {

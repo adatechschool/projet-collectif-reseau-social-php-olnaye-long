@@ -87,14 +87,15 @@ $pageTitle = 'login';
                 }
                 ?>
                 <form action="login.php" method="post" class="login-form">
-                    <input type='hidden' name='email' value='connexion'>
+                    <input type='hidden' name='email' value='connexion' id="connexion">
                     <dl>
                         <label for='email'>E-Mail</label>
                         <input type='email' name='email' id="email"><br>
                         <label for='motpasse'>Mot de passe</label>
                         <input type='password' name='motpasse' id="motpasse"><br>
+                        <input type='submit' value="Prout !" id="connexion">
                     </dl>
-                    <input type='submit' value="Prout !">
+
                 </form>
             </article>
         </main>

@@ -20,7 +20,7 @@ if (!isset($_SESSION['connected_id'])) {
             </div>
 
             <footer>
-                <small>♥ <?= getVotes($post['id']) ?></small>
+                <small> 💩 <?= getVotes($post['id']) ?></small>
 
                 <form method="post" action="">
                     <input type="hidden" name="id" value="<?= $post['id'] ?>">
