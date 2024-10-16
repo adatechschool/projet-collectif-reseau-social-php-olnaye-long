@@ -38,7 +38,7 @@ $post = $lesInformations->fetch_assoc()
         $postContent = $mysqli->real_escape_string($postContent);
 
         //Etape 4 : construction de la requete
-        $lInstructionSql = "INSERT INTO comments "
+        $lInstructionSql = "INSERT INTO posts "
             . "(id, user_id, content, created, parent_id) "
             . "VALUES (NULL, "
             . $authorId . ", "
@@ -65,10 +65,10 @@ $post = $lesInformations->fetch_assoc()
 </article>
 
 <?php
-$laQuestionEnSql = "SELECT comments.content, comments.created, comments.id, comments.user_id, users.alias
-                    FROM comments
-                    JOIN users ON users.id = comments.user_id
-                    WHERE comments.parent_id = " . $post['id'] . "; 
+$laQuestionEnSql = "SELECT posts.content, posts.created, posts.id, posts.user_id, users.alias
+                    FROM posts
+                    JOIN users ON users.id = posts.user_id
+                    WHERE posts.parent_id = " . $post['id'] . "; 
                     ";
 include './src/methods/fetch.php';  
 while ($comment = $lesInformations->fetch_assoc()) {
