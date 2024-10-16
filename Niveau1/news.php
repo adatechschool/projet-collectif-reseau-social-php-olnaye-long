@@ -24,7 +24,7 @@
             <?php
             //Afficher les cinq derniers posts
             // Documentation : les exemples https://www.php.net/manual/fr/mysqli.query.php
-
+            
             // Etape 1: Ouvrir une connexion avec la base de donnée.
             //verification
             if ($mysqli->connect_errno) {
@@ -55,6 +55,7 @@
                     ORDER BY posts.created DESC
                     LIMIT 5
                     ";
+            include "./src/methods/like.php";
             include './src/methods/fetch.php';
             include './src/templates/post-template.php';
             ?>
