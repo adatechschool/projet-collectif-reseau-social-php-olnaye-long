@@ -7,6 +7,7 @@ if (!isset($_SESSION['connected_id'])) {
     include "./src/methods/like.php";
 
     while ($post = $lesInformations->fetch_assoc()) {
+        if ($post['is_post'] == 1) {
         ?>
 
         <article>
@@ -41,5 +42,4 @@ if (!isset($_SESSION['connected_id'])) {
         };
     </script> -->
         </article>
-<?php }
-} ?>
+<?php }}} ?>

@@ -25,6 +25,7 @@
             $laQuestionEnSql = "
                     SELECT posts.content, posts.created,
                     posts.id,
+                    posts.is_post,
                     users.alias as author_name,
                     posts.user_id as user_id,
                     COUNT(likes.id) as like_number, GROUP_CONCAT(DISTINCT tags.label) AS taglist

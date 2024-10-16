@@ -2,7 +2,8 @@
 // $userId = intval($_GET['user_id']);
 include "./src/methods/like.php";
 
-$post = $lesInformations->fetch_assoc()
+$post = $lesInformations->fetch_assoc();
+if ($post['is_post'] == 1) {
     ?>
 
 <article>
@@ -39,12 +40,14 @@ $post = $lesInformations->fetch_assoc()
 
         //Etape 4 : construction de la requete
         $lInstructionSql = "INSERT INTO posts "
-            . "(id, user_id, content, created, parent_id) "
+            . "(id, user_id, content, created, parent_id, is_post) "
             . "VALUES (NULL, "
             . $authorId . ", "
             . "'" . $postContent . "', "
             . "NOW(),"
-            . $post['id'] . ");";
+            . $post['id'] . ", "
+            . "0"
+            . ");";
 
         // Etape 5 : execution
         $ok = $mysqli->query($lInstructionSql);
@@ -70,6 +73,7 @@ $laQuestionEnSql = "SELECT posts.content, posts.created, posts.id, posts.user_id
                     JOIN users ON users.id = posts.user_id
                     WHERE posts.parent_id = " . $post['id'] . "; 
                     ";
+
 include './src/methods/fetch.php';  
 while ($comment = $lesInformations->fetch_assoc()) {
     ?>
@@ -91,9 +95,10 @@ while ($comment = $lesInformations->fetch_assoc()) {
 
                 <button type="submit" name="action" value="upVote" class="likeButton">UpVote</button>
                 <button type="submit" name="action" value="downVote" class="likeButton">DownVote</button>
+                <button onclick="location.href = 'post.php?post_id=<?= $comment['id'] ?>';">Commentaires</button>
             </form>
             <?php include './src/methods/get-tag-id.php' ?>
         </footer>
 
     </article>
-<?php } ?>
+<?php }} ?>
