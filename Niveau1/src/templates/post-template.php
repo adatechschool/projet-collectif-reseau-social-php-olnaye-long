@@ -22,13 +22,14 @@ if (!isset($_SESSION['connected_id'])) {
             <footer>
                 <small>💩 <?= getVotes($post['id']) ?></small>
 
-                <form method="post" action="">
+                <form method="post" action="" id="post-form">
                     <input type="hidden" name="id" value="<?= $post['id'] ?>">
 
                     <button type="submit" name="action" value="upVote" class="likeButton">UpVote</button>
                     <button type="submit" name="action" value="downVote" class="likeButton">DownVote</button>
                     <button type="button"onclick="location.href = 'post.php?post_id=<?= $post['id'] ?>';">Commentaires</button>
                 </form>
+
 
                 <?php include './src/methods/get-tag-id.php' ?>
             </footer>

@@ -91,7 +91,7 @@ $pageTitle = 'create-post';
                     <dt><label for='message'>Message</label></dt>
                     <dd><textarea name='message'></textarea></dd>
                 </dl>
-                <input type='submit'>
+                <input type='submit' id="create-post-input">
             </form>
         </article>
     </main>
