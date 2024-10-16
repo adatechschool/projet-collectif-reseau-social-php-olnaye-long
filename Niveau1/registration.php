@@ -28,7 +28,6 @@
                 if ($enCoursDeTraitement) {
                     include './src/methods/init-db.php';
 
-                    error_reporting(E_ALL);
                     ini_set('display_errors', 1);
 
                     $msg = "";
@@ -53,9 +52,6 @@
                     $stmt = $mysqli->prepare($requeteSql);
 
                     if (move_uploaded_file($tempname, $folder)) {
-                        echo 'image uploaded successfully';
-
-
                         // Etape 6: exécution de la requete
                         if ($stmt) {
                             //En arguments : sss veut dire trois strings
