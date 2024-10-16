@@ -1,5 +1,8 @@
 <?php
+<<<<<<< HEAD
+=======
 
+>>>>>>> 0c9b0c305d2837659c337f5cdcbc79b1f693b70d
 $pageTitle = "logout" ?>
 
 <!doctype html>

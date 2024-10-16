@@ -10,18 +10,26 @@ $pageTitle = 'login';
     <title>ReSoC - Connexion</title>
     <meta name="author" content="Julien Falconnet">
     <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
 
-    <div id="wrapper">
+    <div id="wrapper" class="wrapper-login">
 
-        <aside>
-            <h2>Présentation</h2>
-            <p>Bienvenue sur notre réseau social.</p>
+        <aside id="aside-login">
+            <img src=".\src\img\resoc-login.png" alt="Logo de notre réseau, une petite crotte qui brille et qui sourit"
+                id="login-img">
+            <div class="login-title">
+                <h1 class="login-h1">Poopie</h1>
+                <p class="login-p"><br />🤷🏽‍♀️ Quitte à dire de la merde... 🤷🏽‍♀️</p>
+            </div>
         </aside>
-        <main>
-            <article>
+        <main id="main-login">
+            <article id="article-login">
                 <h2>Connexion</h2>
                 <?php
                 /**
@@ -78,24 +86,26 @@ $pageTitle = 'login';
 
                 }
                 ?>
-                <form action="login.php" method="post">
-                    <input type='hidden' name='email' value='connexion'>
+                <form action="login.php" method="post" class="login-form">
+                    <input type='hidden' name='email' value='connexion' id="connexion">
                     <dl>
-                        <dt><label for='email'>E-Mail</label></dt>
-                        <dd><input type='email' name='email' id="email"></dd>
-                        <dt><label for='motpasse'>Mot de passe</label></dt>
-                        <dd><input type='password' name='motpasse' id="motpasse"></dd>
+                        <label for='email'>E-Mail</label>
+                        <input type='email' name='email' id="email" class="login-input"><br>
+                        <label for='motpasse'>Mot de passe</label>
+                        <input type='password' name='motpasse' id="motpasse" class="login-input"><br>
+                        <input type='submit' value="Prout !" id="connexion">
                     </dl>
-                    <input type='submit'>
-                </form>
-                <p>
-                    Pas de compte?
-                    <a href='registration.php'>Inscrivez-vous.</a>
-                </p>
 
+                </form>
             </article>
         </main>
     </div>
 </body>
+<footer id="footer-login">
+    <p>
+        Envie d'être une petite crotte en or ✨ ?
+        <a href='registration.php'>Rejoins-nous !</a>
+    </p>
+</footer>
 
 </html>

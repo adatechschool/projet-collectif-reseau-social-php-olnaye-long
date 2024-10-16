@@ -21,7 +21,11 @@ if (!isset($_SESSION['connected_id'])) {
             </div>
 
             <footer>
+<<<<<<< HEAD
+                <small> 💩 <?= getVotes($post['id']) ?></small>
+=======
                 <small>💩 <?= getVotes($post['id']) ?></small>
+>>>>>>> 0c9b0c305d2837659c337f5cdcbc79b1f693b70d
 
                 <form method="post" action="">
                     <input type="hidden" name="id" value="<?= $post['id'] ?>">
@@ -40,4 +44,9 @@ if (!isset($_SESSION['connected_id'])) {
         };
     </script> -->
         </article>
+<<<<<<< HEAD
+<?php }
+} ?>
+=======
 <?php }} ?>
+>>>>>>> 0c9b0c305d2837659c337f5cdcbc79b1f693b70d

@@ -1,18 +1,15 @@
 body {
-	background-color: #003;
-	font-family: Arial;
-}
+	background-color: #ffdbb5;
+	font-family: Montserrat;
+	overflow-x: hidden;
+	overflow-y: auto;
 
-a {
-	text-decoration: none;
-	color: black;
-}
-a:hover {
-	text-decoration: underline;
 }
 
 body > header {
-	background-color: #fff;
+	border-radius: 25px;
+	font-family: Montserrat;
+	background-color: #603F26;
 	display: flex;
 	width: 80em;
 	margin: 0 auto 2em auto;
@@ -25,13 +22,14 @@ body > header #menu {
 	display: flex;
 	width: 50%;
 	align-items: stretch;
-	border-left: 1px solid #99b;
 }
 body > header #menu a {
+	text-decoration: none;
+	font-weight: bold;
+	color: #FFDBB5;
 	flex: 1;
 	text-align: center;
 	padding-top: 2em;
-	border-right: 1px solid #99b;
 }
 body > header a:hover {
 	background-color: #99b;
@@ -42,9 +40,11 @@ body > header ul {
 body > header #user {
 	margin-left: auto;
 	flex: 0.2;
-	border-left: 1px solid #99b;
 }
 body > header #user > a {
+	text-decoration: none;
+	font-weight: bold;
+	color: #FFDBB5;
 	display: block;
 	text-align: center;
 	padding: 2em 0;
@@ -56,16 +56,19 @@ body > header #user ul {
 	padding: 0;
 	margin: 0;
 	margin-left: -5em;
-	background-color: #fff;
-	border: 1px solid #99b;
-
+	border-bottom-right-radius: 25px;
+	border-bottom-left-radius: 25px;
 	z-index: 1;
 }
 body > header #user ul li a {
+	background-color: #603F26;
+	text-decoration: none;
+	font-weight: bold;
+	color: #FFDBB5;
 	display: block;
 	width: 10em;
 	padding: 1em;
-	border-bottom: 1px solid #99b;
+
 }
 body > header #user:hover ul {
 	display: block;
@@ -76,23 +79,38 @@ body > header #user:hover ul {
 	width: 80em;
 	margin: 0 auto 2em auto;
 }
+
+.wrapper-login {
+	flex-direction: column;
+}
+
 #wrapper aside {
 	background-color: #fff;
 	flex: 1;
 	padding: 1em;
 	border-radius: 1em;
 }
+/* Cette règle s'applique à toutes les images dans #wrapper aside */
 #wrapper aside img {
 	display: block;
 	width: 50%;
-	margin: auto;
+	margin: 0 auto; /* Centre l'image horizontalement */
+	height: auto;
+}
+
+/* Cette règle s'applique uniquement à l'image avec l'ID #login-img */
+#wrapper aside img#login-img {
+	background-color: #6c4e31;
+	width: 40%;
+	height: auto;
+	margin: 0;
 }
 
 #wrapper main {
 	flex: 3;
 	padding-left: 1em;
 	height: 80vh;
-	overflow-y: scroll;
+	/* overflow-y:  scroll; */
 }
 #wrapper main article {
 	background-color: #fff;
@@ -187,4 +205,101 @@ body > header #user:hover ul {
 
 pre {
 	color: #aaa;
+}
+
+
+/* PAGE LOGIN */
+
+	#wrapper-login main {
+		overflow-y: hidden; /* Hide vertical scrollbar */
+		overflow-x: hidden; /* Hide horizontal scrollbar */
+	}
+
+	#wrapper #aside-login {
+		background-color: #6c4e31;
+		display: flex;
+		align-items: center; /* Centre l'image et le texte verticalement */
+		justify-content: flex-start; /* Aligne le contenu sur la gauche */
+		gap: 20px; /* Espacement entre l'image et le texte */
+		text-align: left; /* Le texte reste aligné à gauche */
+
+		 h1, p {
+			color: #ffdbb5;
+			margin: 0;
+			padding: 0;
+		}
+
+		h1 {
+			font-size: 7em;
+		}
+		p {
+			font-size: 2em;
+		}
+	}
+
+	.login-form {
+		display: flex;
+		justify-content: center; /* Centrer horizontalement */
+		align-items: center; /* Centrer verticalement */
+	}
+
+	#wrapper #article-login {
+		background-color: #6c4e31;
+		color: #ffdbb5;
+		margin-top: 2em;
+		flex: 2;
+
+		dl {
+			display: flex;
+			flex-direction: column;
+			align-items: center; /* Aligne les labels et inputs en colonne */
+			width: 50%; /* Occupe toute la largeur du conteneur */
+		}
+		label {
+			text-align: center; /* Aligne le texte du label à droite */
+			margin-bottom: 5px; /* Espacement en bas du label */
+			font-size: 2em;
+		}
+		h2 {
+			font-size: 4em;
+			text-align: center;
+			padding-top: 0.5 em;
+		}
+		input[type="email"],
+		input[type="password"] {
+			width: 50%; /* Champs prennent toute la largeur */
+			padding: 10px; /* Ajoute un peu de padding pour le style */
+			margin-bottom: 15px; /* Espacement en bas des champs */
+			border-radius: 25px;
+			padding : auto;
+		}
+		.login-input {
+			font-family: Montserrat;
+			font-size: 1.5em !important;
+		}
+
+		#connexion {
+			padding: 1rem;
+			font-size: 2em;
+			font-weight: bold;
+			font-family: Montserrat;
+			color: #FFEAC5;
+			background-color: #422c1b;
+			border-radius: 25px;
+			width: 50%;
+			box-shadow: inset 5px 5px 5px black;
+
+		}
+	#connexion:hover {
+		background-color: #603F26; /* Change la couleur au survol */
+		color: #FFDBB5;
+	}
+
+	a {
+		text-decoration: none;
+		color: black;
+	}
+	a:hover {
+		text-decoration: underline;
+	}
 }
