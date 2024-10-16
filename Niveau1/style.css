@@ -32,7 +32,8 @@ body > header #menu a {
 	padding-top: 2em;
 }
 body > header a:hover {
-	background-color: #99b;
+	background-color: #6C4E31;
+	border-radius: 25%;
 }
 body > header ul {
 	list-style: none;
