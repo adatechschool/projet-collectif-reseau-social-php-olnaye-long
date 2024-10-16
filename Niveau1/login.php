@@ -25,7 +25,7 @@ $pageTitle = 'login';
                 id="login-img">
             <div class="login-title">
                 <h1 class="login-h1">Poopie</h1>
-                <p class="login-p"><br />Quitte à dire de la merde...</p>
+                <p class="login-p"><br />🤷🏽‍♀️ Quitte à dire de la merde... 🤷🏽‍♀️</p>
             </div>
         </aside>
         <main id="main-login">
@@ -86,13 +86,13 @@ $pageTitle = 'login';
 
                 }
                 ?>
-                <form action="login.php" method="post">
+                <form action="login.php" method="post" class="login-form">
                     <input type='hidden' name='email' value='connexion'>
                     <dl>
-                        <dt><label for='email'>E-Mail</label></dt>
-                        <dd><input type='email' name='email' id="email"></dd>
-                        <dt><label for='motpasse'>Mot de passe</label></dt>
-                        <dd><input type='password' name='motpasse' id="motpasse"></dd>
+                        <label for='email'>E-Mail</label>
+                        <input type='email' name='email' id="email"><br>
+                        <label for='motpasse'>Mot de passe</label>
+                        <input type='password' name='motpasse' id="motpasse"><br>
                     </dl>
                     <input type='submit' value="Prout !">
                 </form>
