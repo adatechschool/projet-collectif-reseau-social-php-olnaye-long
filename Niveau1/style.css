@@ -1,7 +1,9 @@
 body {
 	background-color: #ffdbb5;
 	font-family: Montserrat;
-	overflow: hidden;
+	overflow-x: hidden;
+	overflow-y: auto;
+
 }
 
 body > header {
@@ -213,7 +215,7 @@ pre {
 		gap: 20px; /* Espacement entre l'image et le texte */
 		text-align: left; /* Le texte reste aligné à gauche */
 
-		 h1,p {
+		 h1, p {
 			color: #ffdbb5;
 			margin: 0;
 			padding: 0;
@@ -260,7 +262,14 @@ pre {
 			width: 50%; /* Champs prennent toute la largeur */
 			padding: 10px; /* Ajoute un peu de padding pour le style */
 			margin-bottom: 15px; /* Espacement en bas des champs */
+			border-radius: 25px;
+			padding : auto;
 		}
+		.login-input {
+			font-family: Montserrat;
+			font-size: 1.5em !important;
+		}
+
 		#connexion {
 			padding: 1rem;
 			font-size: 2em;
@@ -285,3 +294,4 @@ pre {
 	a:hover {
 		text-decoration: underline;
 	}
+}

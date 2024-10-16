@@ -90,9 +90,9 @@ $pageTitle = 'login';
                     <input type='hidden' name='email' value='connexion' id="connexion">
                     <dl>
                         <label for='email'>E-Mail</label>
-                        <input type='email' name='email' id="email"><br>
+                        <input type='email' name='email' id="email" class="login-input"><br>
                         <label for='motpasse'>Mot de passe</label>
-                        <input type='password' name='motpasse' id="motpasse"><br>
+                        <input type='password' name='motpasse' id="motpasse" class="login-input"><br>
                         <input type='submit' value="Prout !" id="connexion">
                     </dl>
 
