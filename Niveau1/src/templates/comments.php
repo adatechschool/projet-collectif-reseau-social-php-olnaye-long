@@ -2,7 +2,8 @@
 // $userId = intval($_GET['user_id']);
 include "./src/methods/like.php";
 
-$post = $lesInformations->fetch_assoc()
+$post = $lesInformations->fetch_assoc();
+if (!$post['parent_id']) {
     ?>
 
 <article>
@@ -16,7 +17,7 @@ $post = $lesInformations->fetch_assoc()
     </div>
 
     <footer>
-        <small>♥ <?= getVotes($post['id']) ?></small>
+        <small>💩 <?= getVotes($post['id']) ?></small>
 
         <form method="post" action="">
             <input type="hidden" name="id" value="<?= $post['id'] ?>">
@@ -38,7 +39,7 @@ $post = $lesInformations->fetch_assoc()
         $postContent = $mysqli->real_escape_string($postContent);
 
         //Etape 4 : construction de la requete
-        $lInstructionSql = "INSERT INTO comments "
+        $lInstructionSql = "INSERT INTO posts "
             . "(id, user_id, content, created, parent_id) "
             . "VALUES (NULL, "
             . $authorId . ", "
@@ -65,11 +66,12 @@ $post = $lesInformations->fetch_assoc()
 </article>
 
 <?php
-$laQuestionEnSql = "SELECT comments.content, comments.created, comments.id, comments.user_id, users.alias
-                    FROM comments
-                    JOIN users ON users.id = comments.user_id
-                    WHERE comments.parent_id = " . $post['id'] . "; 
+$laQuestionEnSql = "SELECT posts.content, posts.created, posts.id, posts.user_id, users.alias
+                    FROM posts
+                    JOIN users ON users.id = posts.user_id
+                    WHERE posts.parent_id = " . $post['id'] . "; 
                     ";
+
 include './src/methods/fetch.php';  
 while ($comment = $lesInformations->fetch_assoc()) {
     ?>
@@ -84,16 +86,17 @@ while ($comment = $lesInformations->fetch_assoc()) {
         </div>
 
         <footer>
-            <small>♥ <?= getVotes($comment['id']) ?></small>
+            <small>💩 <?= getVotes($comment['id']) ?></small>
 
             <form method="post" action="">
                 <input type="hidden" name="id" value="<?= $comment['id'] ?>">
 
                 <button type="submit" name="action" value="upVote" class="likeButton">UpVote</button>
                 <button type="submit" name="action" value="downVote" class="likeButton">DownVote</button>
+                <button onclick="location.href = 'post.php?post_id=<?= $comment['id'] ?>';">Commentaires</button>
             </form>
             <?php include './src/methods/get-tag-id.php' ?>
         </footer>
 
     </article>
-<?php } ?>
+<?php }} ?>

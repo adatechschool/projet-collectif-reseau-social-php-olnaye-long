@@ -1,4 +1,8 @@
 <?php
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0c9b0c305d2837659c337f5cdcbc79b1f693b70d
 $pageTitle = "logout" ?>
 
 <!doctype html>
@@ -31,10 +35,11 @@ $pageTitle = "logout" ?>
                 ?>
                 <form action="logout.php" method="POST">
                     <dt><label for='deconnexion'>T'es sûr.e de vouloir nous quitter ?</label></dt>
-                    <input type="submit" name="confirm" id ="deconnexion" value="Bye bye" />
+                    <input type="submit" name="confirm" id="deconnexion" value="Bye bye" />
                 </form>
             </article>
         </main>
     </div>
 </body>
+
 </html>

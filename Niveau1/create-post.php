@@ -6,7 +6,7 @@ $pageTitle = 'create-post';
 
 <head>
     <meta charset="utf-8">
-    <title>ReSoC - Post</title>
+    <title>ReSoC - Post d'usurpateur</title>
     <meta name="author" content="Julien Falconnet">
     <link rel="stylesheet" href="style.css" />
 
@@ -31,25 +31,58 @@ $pageTitle = 'create-post';
                 $authorId = $userId;
                 $postContent = $_POST['message'];
 
+
                 $authorId = intval($authorId);
 
                 $postContent = $mysqli->real_escape_string($postContent);
 
                 //Etape 4 : construction de la requete
                 $lInstructionSql = "INSERT INTO posts "
-                    . "(id, user_id, content, created) "
-                    . "VALUES (NULL, "
-                    . $authorId . ", "
-                    . "'" . $postContent . "', "
-                    . "NOW());";
+                . "(id, user_id, content, created, parent_id) "
+                . "VALUES (NULL, "
+                . $authorId . ", "
+                . "'" . $postContent . "', "
+                . "NOW(), "
+                . "NULL);";
 
                 // Etape 5 : execution
                 $ok = $mysqli->query($lInstructionSql);
-                if (!$ok) {
+                if (! $ok) {
                     echo "Impossible d'envoyer le message: " . $mysqli->error;
                 } else {
                     echo "Message envoyé !";
-                    header("Refresh:3; url=news.php", true, 303);
+                    //header("Refresh:3; url=news.php", true, 303);
+                }
+
+                preg_match_all('/#(\w+)/', $postContent, $matches);
+                $hashtagArray = [];
+                foreach ($matches[1] as $match) {
+                    $hashtagArray[] = $match;
+                }
+
+                for ($i = 0; $i < count($hashtagArray); $i++) {
+                    $findHashtags = $mysqli->prepare('SELECT id, label FROM tags WHERE label = ?');
+                    $findHashtags->bind_param('s', $hashtagArray[$i]);
+                    $findHashtags->execute();
+                    $result = $findHashtags->get_result();
+                    $tagToLinkToPost = $result->fetch_assoc();
+
+                    if ($tagToLinkToPost === null) {
+                        $insertHashtags = $mysqli->prepare('INSERT INTO tags (`label`) VALUES (?)');
+                        $insertHashtags->bind_param('s', $hashtagArray[$i]);
+                        $insertHashtags->execute();
+                        $tagToLinkToPost['id'] = $mysqli->insert_id;
+                    }
+
+                    $findPostId = $mysqli->prepare('SELECT id, user_id, content FROM posts WHERE user_id = ? AND content = ?');
+                    $findPostId->bind_param('ss', $authorId, $postContent);
+                    $findPostId->execute();
+                    $result = $findPostId->get_result();
+                    $postToLinkToTag = $result->fetch_assoc();
+
+                    $linkHashtagsToPost = $mysqli->prepare('INSERT INTO posts_tags (`post_id`, `tag_id`) VALUES (?, ?)');
+                    $linkHashtagsToPost->bind_param('ii', $postToLinkToTag['id'], $tagToLinkToPost['id']);
+                    $linkHashtagsToPost->execute();
                 }
             }
             ?>
