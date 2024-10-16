@@ -41,6 +41,7 @@
                     ORDER BY posts.created DESC
                     ";
             include './src/methods/fetch.php';
+            include "./src/methods/like.php";
             include './src/templates/post-template.php';
             ?>
         </main>

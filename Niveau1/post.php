@@ -34,6 +34,7 @@ $pageTitle = 'post';
                     WHERE posts.id='$postId'
                     ";
             include './src/methods/fetch.php';
+            
             include './src/templates/comments.php';
             ?>
         </main>
