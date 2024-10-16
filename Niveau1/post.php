@@ -1,3 +1,7 @@
+<?php
+$pageTitle = 'post';
+?>
+
 <!doctype html>
 <html lang="fr">
 
@@ -9,13 +13,13 @@
 </head>
 
 <body>
-    <?php include './src/templates/header-template.php';?>
+    <?php include './src/templates/header-template.php'; ?>
 
     <div id="wrapper">
 
         <?php
         include './src/methods/init-db.php';
-        // include './src/templates/aside-template.php';
+        include './src/templates/aside-template.php';
         ?>
 
         <main>
