@@ -7,7 +7,7 @@ if (!isset($_SESSION['connected_id'])) {
     include "./src/methods/like.php";
 
     while ($post = $lesInformations->fetch_assoc()) {
-        if ($post['is_post'] == 1) {
+        if (!$post['parent_id']) {
         ?>
 
         <article>
@@ -21,7 +21,7 @@ if (!isset($_SESSION['connected_id'])) {
             </div>
 
             <footer>
-                <small>♥ <?= getVotes($post['id']) ?></small>
+                <small>💩 <?= getVotes($post['id']) ?></small>
 
                 <form method="post" action="">
                     <input type="hidden" name="id" value="<?= $post['id'] ?>">

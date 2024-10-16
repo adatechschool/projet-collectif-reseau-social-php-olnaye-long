@@ -3,7 +3,7 @@
 include "./src/methods/like.php";
 
 $post = $lesInformations->fetch_assoc();
-if ($post['is_post'] == 1) {
+if ($post['parent_id']) {
     ?>
 
 <article>
@@ -40,7 +40,7 @@ if ($post['is_post'] == 1) {
 
         //Etape 4 : construction de la requete
         $lInstructionSql = "INSERT INTO posts "
-            . "(id, user_id, content, created, parent_id, is_post) "
+            . "(id, user_id, content, created, parent_id) "
             . "VALUES (NULL, "
             . $authorId . ", "
             . "'" . $postContent . "', "

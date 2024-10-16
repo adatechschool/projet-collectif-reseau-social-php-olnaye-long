@@ -37,7 +37,7 @@ $pageTitle = 'create-post';
 
                 //Etape 4 : construction de la requete
                 $lInstructionSql = "INSERT INTO posts "
-                . "(id, user_id, content, created, parent_id, is_post) "
+                . "(id, user_id, content, created, parent_id) "
                 . "VALUES (NULL, "
                 . $authorId . ", "
                 . "'" . $postContent . "', "
