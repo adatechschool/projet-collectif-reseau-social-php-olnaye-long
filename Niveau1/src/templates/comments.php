@@ -71,6 +71,6 @@ $laQuestionEnSql = "SELECT posts.content, posts.created, posts.id, posts.user_id
                     WHERE posts.parent_id = " . $post['id'] . "; 
                     ";
 
-include './src/methods/fetch.php';  
+include './src/methods/fetch.php';
 include './src/templates/post-template.php';
 ?>

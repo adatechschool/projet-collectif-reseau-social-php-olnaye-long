@@ -5,11 +5,12 @@ if (!isset($_SESSION['connected_id'])) {
 
     include "password.php";
 
-    while ($post = $lesInformations->fetch_assoc()) {
+     function showComments($info, $indentation = 0): void {
 
+    while ($post = $info->fetch_assoc()) {
         ?>
 
-        <article>
+        <article style="position: relative; left:<?= $indentation ?>px">
             <?= $post['id'] ?>
             <h3>
                 <time datetime='2020-02-01 11:12:13'><?= $post['created'] ?></time>
@@ -27,17 +28,28 @@ if (!isset($_SESSION['connected_id'])) {
 
                     <button type="submit" name="action" value="upVote" class="likeButton">UpVote</button>
                     <button type="submit" name="action" value="downVote" class="likeButton">DownVote</button>
-                    <button type="button"onclick="location.href = 'post.php?post_id=<?= $post['id'] ?>';">Commentaires</button>
+                    <button type="button" onclick="location.href = 'post.php?post_id=<?= $post['id'] ?>';">Commentaires</button>
                 </form>
 
                 <?php include './src/methods/get-tag-id.php' ?>
             </footer>
             <!-- onclick="myFunction()" <- dans le boutton
-     <script>
+            <script>
          function myFunction() {
             event.preventDefault()
         };
     </script> -->
         </article>
-    <?php }
-} ?>
+        <?php
+        $laQuestion2EnSql = "SELECT posts.content, posts.created, posts.id, posts.user_id, users.alias as author_name
+                    FROM posts
+                    JOIN users ON users.id = posts.user_id
+                    WHERE posts.parent_id = " . $post['id'] . "; 
+                    ";
+
+        $lesInformations2 = $GLOBALS["mysqli"]->query($laQuestion2EnSql);
+        showComments($lesInformations2, $indentation + 50);
+     }
+    }
+}
+showComments($lesInformations)?>
