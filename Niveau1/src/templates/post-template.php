@@ -48,7 +48,9 @@ if (!isset($_SESSION['connected_id'])) {
                     ";
 
         $lesInformations2 = $GLOBALS["mysqli"]->query($laQuestion2EnSql);
-        showComments($lesInformations2, $indentation + 50);
+        if (isset($_GET['post_id'])) {
+            showComments($lesInformations2, $indentation + 50);
+        }
      }
     }
 }
