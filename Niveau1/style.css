@@ -86,13 +86,15 @@ body > header #user:hover ul {
 }
 
 #wrapper aside {
-	background-color: #fff;
+	color : #603F26;
+	background-color: #FFEAC5;
 	flex: 1;
 	padding: 1em;
 	border-radius: 1em;
 }
 /* Cette règle s'applique à toutes les images dans #wrapper aside */
 #wrapper aside img {
+	border-radius: 75px;
 	display: block;
 	width: 50%;
 	margin: 0 auto; /* Centre l'image horizontalement */
