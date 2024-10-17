@@ -89,7 +89,7 @@ $pageTitle = 'create-post';
             <form action="create-post.php" method="post">
                 <dl>
                     <dt><label for='message'>Message</label></dt>
-                    <dd><textarea name='message' style=" position: relative; transform: translateX(-50%); left:47.5%; max-width: 850px; width: 850px" rows="5"></textarea></dd>
+                    <dd><textarea name='message' style=" position: relative; transform: translateX(-50%); left:47.5%; max-width: 850px; width: 850px; border-radius: 20px; border: none;" rows="5"></textarea></dd>
                 </dl>
                 <input type='submit' id="create-post-input">
             </form>

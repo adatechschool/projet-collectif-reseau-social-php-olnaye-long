@@ -17,7 +17,6 @@ $check_dislike->bind_param('ii', $post['id'], $sessionId);
 $check_dislike->execute();
 $dislike_result = $check_dislike->get_result();
 $dislike_row = $dislike_result->fetch_assoc();
-echo $like_row['count'], $dislike_row['count'];
     ?>
 
 <article style="width: 900px">
@@ -72,7 +71,7 @@ echo $like_row['count'], $dislike_row['count'];
     <form method="post">
         <dl>
             <dt><label for='message'>Message</label></dt>
-            <dd><textarea name='message' style=" position: relative; transform: translateX(-50%); left:47.5%; max-width: 850px; width: 850px" rows="5"></textarea></dd>
+            <dd><textarea name='message' style=" position: relative; transform: translateX(-50%); left:47.5%; max-width: 850px; width: 850px; border-radius: 10px; border: none;" rows="5"></textarea></dd>
         </dl>
         <input type='submit'>
     </form>
