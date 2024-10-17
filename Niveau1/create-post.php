@@ -21,7 +21,7 @@ $pageTitle = 'create-post';
     </aside>
 
     <main>
-        <article>
+        <article style="max-width: 900px;">
             <h2>Poster un message</h2>
             <?php
             include './src/methods/init-db.php';
@@ -89,7 +89,7 @@ $pageTitle = 'create-post';
             <form action="create-post.php" method="post">
                 <dl>
                     <dt><label for='message'>Message</label></dt>
-                    <dd><textarea name='message'></textarea></dd>
+                    <dd><textarea name='message' style=" position: relative; transform: translateX(-50%); left:47.5%; max-width: 850px; width: 850px" rows="5"></textarea></dd>
                 </dl>
                 <input type='submit' id="create-post-input">
             </form>

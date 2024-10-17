@@ -5,7 +5,7 @@ include "./src/methods/like.php";
 $post = $lesInformations->fetch_assoc();
     ?>
 
-<article>
+<article style="width: 900px">
     <h3>
         <time datetime='2020-02-01 11:12:13'><?= $post['created'] ?></time>
     </h3>
@@ -25,7 +25,7 @@ $post = $lesInformations->fetch_assoc();
         </form>
     </footer>
 </article>
-<article>
+<article style="max-width: 900px;">
     <?php
     $enCoursDeTraitement = isset($_POST['message']);
     if ($enCoursDeTraitement) {
@@ -57,7 +57,7 @@ $post = $lesInformations->fetch_assoc();
     <form method="post">
         <dl>
             <dt><label for='message'>Message</label></dt>
-            <dd><textarea name='message'></textarea></dd>
+            <dd><textarea name='message' style=" position: relative; transform: translateX(-50%); left:47.5%; max-width: 850px; width: 850px" rows="5"></textarea></dd>
         </dl>
         <input type='submit'>
     </form>
