@@ -39,7 +39,7 @@ if (!isset($_SESSION['connected_id'])) {
                 <form method="post" action="" id="post-form">
                     <input type="hidden" name="id" value="<?= $post['id'] ?>">
 
-                    <button onclick="myFunction()" type="submit" name="action" value="upVote" class="likeButton" style="<?php if($like_row['count']) {echo 'background-color:#FFDBB5; color: #603F26;';} ?>;">UpVote</button>
+                    <button type="submit" name="action" value="upVote" class="likeButton" style="<?php if($like_row['count']) {echo 'background-color:#FFDBB5; color: #603F26;';} ?>;">UpVote</button>
                     <button type="submit" name="action" value="downVote" class="likeButton" style="<?php if($dislike_row['count']) {echo 'background-color:#FFDBB5; color: #603F26;';} ?>;">DownVote</button>
                     <button type="button" onclick="location.href = 'post.php?post_id=<?= $post['id'] ?>';">
                         <?php
@@ -55,11 +55,12 @@ if (!isset($_SESSION['connected_id'])) {
 
                 <?php include './src/methods/get-tag-id.php' ?>
             </footer>
+            <!-- onclick="myFunction()" <- dans le boutton
             <script>
          function myFunction() {
             event.preventDefault()
         };
-    </script>
+    </script> -->
         </article>
         <?php
         $laQuestion2EnSql = "SELECT posts.content, posts.created, posts.id, posts.user_id, users.alias as author_name
