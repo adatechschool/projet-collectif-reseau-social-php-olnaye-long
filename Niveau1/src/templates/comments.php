@@ -3,6 +3,21 @@
 include "./src/methods/like.php";
 
 $post = $lesInformations->fetch_assoc();
+
+$sessionId = $_SESSION['connected_id'];
+
+$check_like = $GLOBALS["mysqli"]->prepare('SELECT COUNT(id) AS count FROM likes WHERE post_id = ? AND user_id = ?');
+$check_like->bind_param('ii', $post['id'], $sessionId);
+$check_like->execute();
+$like_result = $check_like->get_result();
+$like_row = $like_result->fetch_assoc();
+
+$check_dislike = $GLOBALS["mysqli"]->prepare('SELECT COUNT(id) AS count FROM dislikes WHERE post_id = ? AND user_id = ?');
+$check_dislike->bind_param('ii', $post['id'], $sessionId);
+$check_dislike->execute();
+$dislike_result = $check_dislike->get_result();
+$dislike_row = $dislike_result->fetch_assoc();
+echo $like_row['count'], $dislike_row['count'];
     ?>
 
 <article style="width: 900px">
@@ -20,8 +35,8 @@ $post = $lesInformations->fetch_assoc();
         <form method="post" action="">
             <input type="hidden" name="id" value="<?= $post['id'] ?>">
 
-            <button type="submit" name="action" value="upVote" class="likeButton">UpVote</button>
-            <button type="submit" name="action" value="downVote" class="likeButton">DownVote</button>
+            <button type="submit" name="action" value="upVote" class="likeButton" style="<?php if($like_row['count']) {echo 'background-color:#FFDBB5; color: #603F26;';} ?>;">UpVote</button>
+            <button type="submit" name="action" value="downVote" class="likeButton" style="<?php if($dislike_row['count']) {echo 'background-color:#FFDBB5; color: #603F26;';} ?>;">DownVote</button>
         </form>
     </footer>
 </article>
