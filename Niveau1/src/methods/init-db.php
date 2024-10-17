@@ -31,10 +31,14 @@ if (isset($_GET['user_id'])) {
 } elseif (isset($_GET['post_id'])) {
 
     $postId = intval($_GET['post_id']);
-    $laQuestionEnSql = "SELECT * FROM tags WHERE id= '$postId' ";
+    $laQuestionEnSql = "SELECT users.id, users.alias, users.profile_pic, posts.id as post_id
+                        FROM users
+                        JOIN posts ON posts.user_id=users.id
+                        WHERE posts.id='$postId'";
 
     $lesInformations = $mysqli->query($laQuestionEnSql);
-    $post = $lesInformations->fetch_assoc();
+    $user = $lesInformations->fetch_assoc();
+    $userAlias = $user['alias'];
 } elseif ($pageTitle == 'admin') {
 
     $laQuestionEnSql = "SELECT * FROM `tags` LIMIT 50";

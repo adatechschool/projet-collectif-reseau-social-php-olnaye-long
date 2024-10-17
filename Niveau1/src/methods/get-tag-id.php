@@ -4,7 +4,7 @@ if (isset($post['taglist'])) {
     $tagsArray = explode(",", $tagList);
     for ($i = 0; $i < count($tagsArray); $i++) {
 
-        $getTagId = $BDD->prepare('SELECT id, label FROM tags WHERE label = ?');
+        $getTagId = $GLOBALS["mysqli"]->prepare('SELECT id, label FROM tags WHERE label = ?');
         $getTagId->bind_param('s', $tagsArray[$i]);
         $getTagId->execute();
         $result = $getTagId->get_result();

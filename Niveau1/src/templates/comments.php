@@ -3,10 +3,23 @@
 include "./src/methods/like.php";
 
 $post = $lesInformations->fetch_assoc();
+
+$sessionId = $_SESSION['connected_id'];
+
+$check_like = $GLOBALS["mysqli"]->prepare('SELECT COUNT(id) AS count FROM likes WHERE post_id = ? AND user_id = ?');
+$check_like->bind_param('ii', $post['id'], $sessionId);
+$check_like->execute();
+$like_result = $check_like->get_result();
+$like_row = $like_result->fetch_assoc();
+
+$check_dislike = $GLOBALS["mysqli"]->prepare('SELECT COUNT(id) AS count FROM dislikes WHERE post_id = ? AND user_id = ?');
+$check_dislike->bind_param('ii', $post['id'], $sessionId);
+$check_dislike->execute();
+$dislike_result = $check_dislike->get_result();
+$dislike_row = $dislike_result->fetch_assoc();
     ?>
 
-<article>
-    <?= $post['id'] ?>
+<article style="width: 900px">
     <h3>
         <time datetime='2020-02-01 11:12:13'><?= $post['created'] ?></time>
     </h3>
@@ -21,12 +34,12 @@ $post = $lesInformations->fetch_assoc();
         <form method="post" action="">
             <input type="hidden" name="id" value="<?= $post['id'] ?>">
 
-            <button type="submit" name="action" value="upVote" class="likeButton">UpVote</button>
-            <button type="submit" name="action" value="downVote" class="likeButton">DownVote</button>
+            <button type="submit" name="action" value="upVote" class="likeButton" style="<?php if($like_row['count']) {echo 'background-color:#FFDBB5; color: #603F26;';} ?>;">UpVote</button>
+            <button type="submit" name="action" value="downVote" class="likeButton" style="<?php if($dislike_row['count']) {echo 'background-color:#FFDBB5; color: #603F26;';} ?>;">DownVote</button>
         </form>
     </footer>
 </article>
-<article>
+<article style="max-width: 900px;">
     <?php
     $enCoursDeTraitement = isset($_POST['message']);
     if ($enCoursDeTraitement) {
@@ -58,7 +71,7 @@ $post = $lesInformations->fetch_assoc();
     <form method="post">
         <dl>
             <dt><label for='message'>Message</label></dt>
-            <dd><textarea name='message'></textarea></dd>
+            <dd><textarea name='message' style=" position: relative; transform: translateX(-50%); left:47.5%; max-width: 850px; width: 850px; border-radius: 10px; border: none;" rows="5"></textarea></dd>
         </dl>
         <input type='submit'>
     </form>
@@ -71,6 +84,6 @@ $laQuestionEnSql = "SELECT posts.content, posts.created, posts.id, posts.user_id
                     WHERE posts.parent_id = " . $post['id'] . "; 
                     ";
 
-include './src/methods/fetch.php';  
+include './src/methods/fetch.php';
 include './src/templates/post-template.php';
 ?>

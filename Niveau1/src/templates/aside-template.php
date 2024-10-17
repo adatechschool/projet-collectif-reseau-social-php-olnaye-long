@@ -19,6 +19,8 @@
             echo ($pageTitle == 'tags') ? "Sur cette page vous trouverez les derniers messages comportant le mot-clé {$tag['label']}." : "";
             echo ($pageTitle == 'wall') ? "Sur cette page vous trouverez tous les messages de {$userAlias}." : "";
             echo ($pageTitle == 'logout') ? "Page de déconnexion" : "";
+            echo ($pageTitle == 'post') ? "<a href = 'wall.php?user_id=" . $user['id'] . "'\">Voir tous les posts de {$userAlias}</a>" : "";
+
             ?>
         </p>
 
